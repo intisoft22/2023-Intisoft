@@ -1,0 +1,15 @@
+{
+    'name': 'Show Journal Entries in Bank statement',
+    'version': '14.0',
+    'summary': 'Show Journal Entries in Bank statement',
+    'description': 'Show Journal Entries in Bank statement',
+    'category': 'account',
+    'author': 'Meyrina Herawati',
+    'website': 'rexmey.com',
+    'license': '',
+    'depends': ['account'],
+    'data': ['views/account_journal_dashboard_view.xml'],
+    # 'demo': [''],
+    'installable': True,
+    'auto_install': False,
+}

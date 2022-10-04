@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='button_confirm'][2]" position="replace">
+
+                </xpath>
+                <xpath expr="//header/button[@name='button_confirm'][1]" position="replace">
+                    <button name="button_confirm" type="object"
+                            attrs="{'invisible':['|',('check_user2','=',False),('state','!=','draft')]}" string="Confirm Order" class="oe_highlight"
+                            id="draft_confirm"/>
+
+                </xpath>
+
+
+<!--                <xpath expr="//header/button[@name='button_approve']" position="replace">-->
+<!--                    <button name="button_approve" type="object" string="Approve"-->
+<!--                            attrs="{'invisible':['|',('check_user2','=',False),('state','!=','to approve')]}"-->
+<!--                            class="oe_highlight"/>-->
+
+
+<!--                </xpath>-->
+                <field name="date_order" position="after">
+
+                    <field name="check_user2" invisible="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

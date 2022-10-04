@@ -1,0 +1,15 @@
+{
+    'name': 'Email Sales confirmed',
+    'version': '14.0',
+    'summary': 'Email Sales confirmed',
+    'description': 'Email Sales confirmed',
+    'category': 'sales',
+    'author': 'Meyrina Herawati',
+    'website': 'rexmey.com',
+    'license': '',
+    'depends': ['sale'],
+    'data': ['views/mail_template.xml'],
+    # 'demo': [''],
+    'installable': True,
+    'auto_install': False,
+}

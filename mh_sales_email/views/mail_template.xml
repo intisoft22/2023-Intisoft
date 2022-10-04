@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+
+        <record id="email_template_notif_sale" model="mail.template">
+            <field name="name">Sales Order: Notif by email for Sales Manager</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">${object.company_id.name} Sales Order (Ref ${object.name or 'n/a' })</field>
+            <field name="email_from">${(object.email_from) | safe}</field>
+            <field name="email_to">${object.email_to}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        % set doc_name = 'quotation' if object.state in ('draft', 'sent') else 'order'
+                        Hello,
+                        <br/>
+                        <br/>
+
+                        ${doc_name}
+                        <strong>${object.partner_id.name}</strong>
+                        (<strong>${object.name}</strong>)
+                        % if object.origin:
+                        (with reference: ${object.origin} )
+                        % endif
+                        amounting in <strong>${format_amount(object.amount_total, object.pricelist_id.currency_id)}
+                    </strong> has been confirmed.
+
+                        <br/>
+                        <br/>
+                         <div style="margin: 16px 0px 16px 0px;">
+                            <a href="/web/login?auth_login=${object.email_to}"
+                                style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                Go to odoo
+                            </a>
+                        </div>
+                        <br/>
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="sale.action_report_saleorder"/>
+            <field name="report_name">${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

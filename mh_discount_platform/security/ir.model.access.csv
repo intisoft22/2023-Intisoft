@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_platform_sale_user,platform sale user,model_platform_sale,,1,0,0,0
+access_platform_sale_user_sale,platform sale user sale,model_platform_sale,sales_team.group_sale_salesman,1,1,1,1
+access_platform_sale_disc_user,platform sale disc user,model_platform_sale_disc,,1,0,0,0
+access_platform_sale__discuser_sale,platform sale disc user sale,model_platform_sale_disc,sales_team.group_sale_salesman,1,1,1,1

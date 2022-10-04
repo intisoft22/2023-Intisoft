@@ -1,0 +1,15 @@
+{
+    'name': 'Notif Purchase',
+    'version': '14.0',
+    'summary': 'notif purchase',
+    'description': 'notif purchase',
+    'category': 'purchase',
+    'author': 'Meyrina Herawati',
+    'website': 'rexmey.com',
+    'license': '',
+    'depends': ['purchase'],
+    'data': ['views/purchase_view.xml'],
+    # 'demo': [''],
+    'installable': True,
+    'auto_install': False,
+}

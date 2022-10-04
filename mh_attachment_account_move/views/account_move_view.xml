@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_move_for_inheritm" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@id='other_tab']" position="after">
+                    <page string="Attachment" name="attachment_account_move">
+                        <field name="attachment_ids" widget="many2many_binary" class="oe_inline"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
