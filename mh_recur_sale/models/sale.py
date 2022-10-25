@@ -43,3 +43,11 @@ class SaleOrder(models.Model):
             next_po=po.copy({'next_date':False})
 
 
+    @api.model
+    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+
+        if 'date_order:year' in groupby or 'date_order:month' in groupby or 'date_order:quarter' in groupby or 'date_order:month' in groupby or 'date_order:week' in groupby or 'date_order:day' in groupby:
+            orderby = 'date_order DESC' + (orderby and (',' + orderby) or '')
+        return super(SaleOrder, self).read_group(domain, fields, groupby, offset=offset, limit=limit,
+                                                     orderby=orderby, lazy=lazy)
+
