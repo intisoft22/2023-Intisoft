@@ -6,6 +6,12 @@ class PurchaseOrder(models.Model):
     _name = 'purchase.order'
     _inherit = 'purchase.order'
 
+    READONLY_STATES = {
+        'purchase': [('readonly', True)],
+        'done': [('readonly', True)],
+        'cancel': [('readonly', True)],
+        'to approve': [('readonly', True)],
+    }
 
     check_user = fields.Boolean(
         string="Check User", store=True,
@@ -15,6 +21,15 @@ class PurchaseOrder(models.Model):
         string="Check User",
         compute="_get_checkuser"
     )
+    order_line = fields.One2many('purchase.order.line', 'order_id', string='Order Lines'
+                                 , states={'to approve': [('readonly', True)],'purchase': [('readonly', True)],'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)
+    partner_id = fields.Many2one('res.partner', string='Vendor', required=True, states=READONLY_STATES,
+                                 change_default=True, tracking=True,
+                                 domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+                                 help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
+    date_order = fields.Datetime('Order Deadline', required=True, states=READONLY_STATES, index=True, copy=False,
+                                 default=fields.Datetime.now,
+                                 help="Depicts the date within which the Quotation should be confirmed and converted into a purchase order.")
 
     @api.depends('user_id')
     def _get_checkuser(self):

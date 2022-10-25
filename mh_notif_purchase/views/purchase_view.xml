@@ -29,6 +29,9 @@
 
                     <field name="check_user2" invisible="1"/>
                 </field>
+                <field name="order_line" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'not in', ('draft'))]}</attribute>
+                </field>
             </field>
         </record>
     </data>
