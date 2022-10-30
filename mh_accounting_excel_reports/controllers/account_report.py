@@ -265,25 +265,27 @@ class AccountFinancialExcelReportController(http.Controller):
         # data['form'] = request.env['accounting.report'].read(['date_from', 'date_to', 'journal_ids', 'target_move', 'company_id'])[0]
         # used_context = request.env['accounting.report']._build_contexts(data)
         # data['form']['used_context'] = dict(used_context, lang=get_lang(self.env).code)
-        print(data)
-        print("=========================")
+        # print(data)
+        # print("=========================")
 
         report_lines = request.env['report.accounting_pdf_reports.report_financial'].get_account_lines(data)
 
-        print(report_lines)
-        print("=========================")
+        # print(report_lines)
+        # print("=========================")
         row=1
-        sheet.write(row, 0, "Balance Sheet", title_style)
+        sheet.write(row, 0, wizard.account_report_id.name, title_style)
         row+=1
         sheet.write(row, 0, "Target Move", title_style2)
-        sheet.write(row, 1,'Date from : '+ str(date_from), title_style2)
+        if date_from:
+            sheet.write(row, 1,'Date from : '+ str(date_from), title_style2)
         row+=1
         if wizard.target_move == "posted":
             targetmove="All Posted Entries"
         else:
             targetmove='All Entries'
         sheet.write(row, 0,targetmove, title_style2)
-        sheet.write(row, 1,'Date to : '+ str(date_to), title_style2)
+        if date_to:
+            sheet.write(row, 1,'Date to : '+ str(date_to), title_style2)
         row+=1
         sheet.write(row, 0, "Name", header_style)
         sheet.write(row, 1, "Balance", header_style)
