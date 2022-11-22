@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_erm_location_user,hr.employee.erm_location.user,model_erm_location,hr.group_hr_user,1,1,1,1
+access_hr_employee_erm_location_emp,hr.employee.erm_location.emp,model_erm_location,base.group_user,1,0,0,0
+access_hr_employee_rm_location_user,hr.employee.rm_location.user,model_rm_location,hr.group_hr_user,1,1,1,1
+access_hr_employee_rm_location_emp,hr.employee.rm_location.emp,model_rm_location,base.group_user,1,0,0,0
+access_hr_employee_dp_location_user,hr.employee.dp_location.user,model_dp_location,hr.group_hr_user,1,1,1,1
+access_hr_employee_dp_location_emp,hr.employee.dp_location.emp,model_dp_location,base.group_user,1,0,0,0
+access_hr_employee_dp_location_emp,hr.employee.dp_location.emp,model_dp_location,base.group_user,1,0,0,0
+access_employee_report_wizard_emp,employee.report.wizard.emp,model_employee_report_wizard,hr.group_hr_user,1,1,1,1

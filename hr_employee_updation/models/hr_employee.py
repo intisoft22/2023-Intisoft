@@ -109,10 +109,13 @@ class HrEmployee(models.Model):
     sim_no = fields.Char(string='SIM no')
     religion = fields.Selection(RELIGION_SELECTION)
     identification_address = fields.Char("Identification Address")
+    nik = fields.Char("NIK")
     kk_no = fields.Char("KK No")
     npwp_no = fields.Char("NPWP No")
     npwp_address = fields.Char("NPWP Address")
     npwp_state = fields.Selection(NPWP_SELECTION)
+    resign_date = fields.Date(string='Resign Date')
+    contract_type = fields.Many2one('hr.contract.type','Contract')
 
     @api.depends('contract_id')
     def compute_joining(self):

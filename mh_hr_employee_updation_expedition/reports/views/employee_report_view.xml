@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form untuk memilih Employee person dan tanggal mulai dan tanggal akhir -->
+        <record id="employee_report_wizard_form" model="ir.ui.view">
+            <field name="name">Employee Report</field>
+            <field name="model">employee.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Employee Report in Excel Format">
+
+                    <footer>
+                        <button name="get_excel_report" string="Export (XLS)" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk membuka form diatas -->
+        <record model="ir.actions.act_window" id="action_open_employee_report_wizard_form">
+            <field name="name">Employee Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+           id="menu_reporting_excel"
+           name="Reporting Excel"
+           parent="hr.menu_hr_root"
+           groups="hr.group_hr_manager,hr.group_hr_user"
+           sequence="99"/>
+        <!-- Tambah menu baru di Sale >> Reportng -->
+        <menuitem name="Employee Report"
+                  id="menu_employee_report_in_excel"
+                  parent="mh_hr_employee_updation_expedition.menu_reporting_excel"
+                  action="action_open_employee_report_wizard_form" groups="hr.group_hr_manager,hr.group_hr_user"
+/>
+
+
+    </data>
+</odoo>

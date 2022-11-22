@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rm_location_form_view" model="ir.ui.view">
+            <field name="name">rm.location.form</field>
+            <field name="model">rm.location</field>
+            <field name="arch" type="xml">
+                <form string="RM">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="erm_id"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="rm_location_tree_view" model="ir.ui.view">
+            <field name="name">rm.location.tree</field>
+            <field name="model">rm.location</field>
+            <field name="arch" type="xml">
+                <tree string="RM">
+                    <field name="name"/>
+                    <field name="erm_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rm_location_act_window" model="ir.actions.act_window">
+            <field name="name">RM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rm.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new RM.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="RM" id="rm_location_menu" parent="hr_location_menu"
+                  action="rm_location_act_window"/>
+
+    </data>
+</odoo>

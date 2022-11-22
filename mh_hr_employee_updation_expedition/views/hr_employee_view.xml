@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hr_employee_inherit_form_view">
+
+            <field name="name">hr.employee.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='hr_settings']/group/group[1]" position="after">
+                    <group name="kna_status" string="KNA">
+                        <field name="joining_kna_date"/>
+                        <field name="nik_kna"/>
+                        <field name="code_mitra"/>
+                        <field name="vendor_id"/>
+                        <field name="dp_id"/>
+                        <field name="divisi"/>
+                        <field name="status"/>
+                        <field name="letter_sign"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="employee_relationship" model="hr.employee.relation">
-            <field name="name">Spouse</field>
+            <field name="name">Suami/Istri</field>
     </record>
 
     <record id="employee_relationship_father" model="hr.employee.relation">
-            <field name="name">Father</field>
+            <field name="name">Ayah</field>
     </record>
 
     <record id="employee_relationship_mother" model="hr.employee.relation">
-            <field name="name">Mother</field>
+            <field name="name">Ibu</field>
     </record>
+
+    <record id="employee_relationship_child_1" model="hr.employee.relation">
+            <field name="name">Anak 1</field>
+    </record>
+    <record id="employee_relationship_child_2" model="hr.employee.relation">
+            <field name="name">Anak 2</field>
+    </record>
+    <record id="employee_relationship_child_3" model="hr.employee.relation">
+            <field name="name">Anak 3</field>
+    </record>
+
 </odoo>
