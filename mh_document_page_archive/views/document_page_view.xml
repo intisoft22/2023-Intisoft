@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_wiki_form_update2" model="ir.ui.view">
+            <field name="name">document.page.form</field>
+            <field name="model">document.page</field>
+            <field name="inherit_id" ref="document_page.view_wiki_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='info']" position="after">
+
+                    <page string="Archive"
+                         ><!--groups="mgmtsystem.group_mgmtsystem_mr"-->
+<!--                         attrs="{'invisible':[('state','!=','distributed')]}"-->
+                        <field name="record_ids">
+                            <tree string="Record" version="7.0">
+                                <field name="name"/>
+                                <field name="nama_record"/>
+                                <field name="state" string="Status"/>
+
+                                <!--<field name="jenis"/>-->
+<!--                                <field name="size"/>-->
+                                <field name="pembuat"/>
+                                <field name="tanggal" string="Created Date"/>
+<!--                                <button name="delete_archive" icon="fa-times" string="Revisi" type="object"-->
+<!--                                        groups="mgmtsystem.group_mgmtsystem_qmr"/>-->
+                            </tree>
+                        </field>
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
