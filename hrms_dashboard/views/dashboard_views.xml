@@ -19,7 +19,7 @@
         <menuitem id="menu_hrms_dashboard"
                   name="Dashboard"
                   action="hr_action_dashboard"
-                  web_icon="hrms_dashboard,static/description/dashboard_icon.png"
+                  web_icon="hrms_dashboard,static/description/icon.png"
                   sequence="-100" groups="base.group_user"/>
     </data>
 

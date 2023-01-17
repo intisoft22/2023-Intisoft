@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record model="ir.ui.view" id="hr_employee_inherit_form_view_ex">
+
+            <field name="name">hr.employee.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_employee_updation.hr_employee_inherit_form_view"/>
+            <field name="arch" type="xml">
+                <field name="nik" position="replace">
+<!--                    <label for="nik"/>-->
+                    <field name="nik" placeholder="NIK Mitra" />
+                </field>
+            </field>
+        </record>
         <record model="ir.ui.view" id="hr_employee_inherit_form_view">
 
             <field name="name">hr.employee.form.view</field>
@@ -13,7 +25,7 @@
                         <field name="nik_kna"/>
                         <field name="code_mitra"/>
                         <field name="vendor_id"/>
-                        <field name="dp_id"/>
+                        <field name="dp_id" widget="many2many_tags"/>
                         <field name="divisi"/>
                         <field name="status"/>
                         <field name="letter_sign"/>

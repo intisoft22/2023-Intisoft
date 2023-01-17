@@ -1,5 +1,5 @@
 {
-    'name': 'Updation For Document Page',
+    'name': 'Document Page Updation',
     'version': '14.0',
     'summary': 'Updation For Document Page',
     'description': 'Updation For Document Page',

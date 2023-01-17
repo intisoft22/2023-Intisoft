@@ -45,8 +45,8 @@
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click ">
                                 <div class="o_dropdown_kanban dropdown">
-                                    <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
-                                        <span class="fa fa-bars fa-lg"/>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                         <span class="fa fa-bars fa-lg" title="tag"/>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <t t-if="widget.editable">
@@ -108,7 +108,7 @@
 
         <menuitem name="Shifts" id="menu_shift"
                   groups="hr.group_hr_manager"
-                  web_icon="hr_employee_shift,static/description/shift_icon.png"/>
+                  web_icon="hr_employee_shift,static/description/icon.png"/>
         <menuitem name="Configuration" id="shift_configuration" parent="hr_employee_shift.menu_shift"/>
         <menuitem name="Shifts" id="menu_conf_shift" parent="shift_configuration"
                   action="resource.action_resource_calendar_form"/>

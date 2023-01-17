@@ -72,6 +72,7 @@
             <field name="model">hr.employee.document</field>
             <field name="arch" type="xml">
                 <search string="Employee Documents">
+                    <field name="employee_ref"/>
                     <group expand="0" string="Group By">
                         <filter name="Employee" string="Employee" domain="[]" context="{'group_by':'employee_ref'}"/>
                     </group>

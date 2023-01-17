@@ -52,6 +52,15 @@
                 'hr_reminder',
                 'hr_reward_warning',
                 'hrms_dashboard',
+                'knowledge',
+                'document_page',
+                'hr_disciplinary_tracking',
+                'hr_holidays_public',
+                'mh_document_page_archive_hr',
+                'mh_hr_employee_promotion',
+                'history_employee',
+                'hr_recruitment_survey',
+                'resource_schedule'
                 ],
     'data': [
         'views/menu_arrangement_view.xml',

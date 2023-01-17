@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_employee_form_leave_archive_hr" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <div name="button_box" position="inside">
+
+                    <button name="%(mh_document_page_archive.record_document_action_iso)d"
+                            type="action"
+                            class="oe_stat_button"
+                            icon="fa-file-text "
+                            context="{'search_default_employee_id': active_id}"
+                            groups="base.group_user"
+                            help="Documents">
+                        <div class="o_field_widget o_stat_info">
+
+                            <span class="o_stat_text">
+                                Main Documents
+                            </span>
+                        </div>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+
+        <record id="view_record_document_filter_hr" model="ir.ui.view">
+            <field name="name">record.document.search</field>
+            <field name="model">record.document</field>
+            <field name="inherit_id" ref="mh_document_page_archive.view_record_document_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='name']" position="after">
+                    <field name="employee_id" string="Employee"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="record_document_form_hr" model="ir.ui.view">
+            <field name="name">record.document.form</field>
+            <field name="model">record.document</field>
+            <field name="inherit_id" ref="mh_document_page_archive.record_document_form"/>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <field name="dept" position="after">
+                    <field name="employee_id"/>
+                </field>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

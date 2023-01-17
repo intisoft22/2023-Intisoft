@@ -42,7 +42,7 @@
         'views/dashboard_views.xml',
     ],
     'qweb': ["static/src/xml/hrms_dashboard.xml"],
-    'images': ["static/description/banner.gif"],
+    'images': ["static/description/banner.gif","static/description/dashboard_icon.png"],
     'license': "AGPL-3",
     'installable': True,
     'application': True,

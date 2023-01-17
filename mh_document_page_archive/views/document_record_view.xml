@@ -3,95 +3,113 @@
     <data>
 
 
-    <record id="record_document_form" model="ir.ui.view">
-        <field name="name">record.document.form</field>
-        <field name="model">record.document</field>
-        <field name="priority">100</field>
-        <field name="arch" type="xml">
-            <form>
-                <header>
+        <record id="record_document_form" model="ir.ui.view">
+            <field name="name">record.document.form</field>
+            <field name="model">record.document</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
 
-                    <!--<button name="tes" string="Add to My Dashboard" type="object" style="background-color:#8cff66;color:#fff !important;"  attrs="{'invisible': ['|',('done_chart','=',True),('state','!=','active')]}"  class="oe_highlight" groups="mgmtsystem.group_mgmtsystem_qmr,mgmtsystem.group_presiden_direktur"/>-->
-                    <button name="upload" string="Upload" type="object" states="draft"  style="background-color:#8cff66;color:#fff !important;" groups="base.group_user" />
-                    <button name="reupload" string="Re-Upload" type="object" states="uploaded"  style="background-color:#8cff66;color:#fff !important;" groups="mgmtsystem.group_mgmtsystem_dept_head" />
+                        <!--<button name="tes" string="Add to My Dashboard" type="object" style="background-color:#8cff66;color:#fff !important;"  attrs="{'invisible': ['|',('done_chart','=',True),('state','!=','active')]}"  class="oe_highlight" groups="mgmtsystem.group_mgmtsystem_qmr,mgmtsystem.group_presiden_direktur"/>-->
+                        <button name="upload" string="Upload" type="object" states="draft"
+                                style="background-color:#8cff66;color:#fff !important;" groups="base.group_user"/>
+                        <button name="reupload" string="Re-Upload" type="object" states="uploaded"
+                                style="background-color:#8cff66;color:#fff !important;"
+                               />
 
-<!--                    <button name="revisi_act" invisible="1" string="Revisi" type="object" style="background-color:#fff;" states="active"  groups="mgmtsystem.group_mgmtsystem_dc"/>-->
+                        <!--                    <button name="revisi_act" invisible="1" string="Revisi" type="object" style="background-color:#fff;" states="active"  groups="mgmtsystem.group_mgmtsystem_dc"/>-->
 
-                    <!--<button name="cancel" string="Decline" type="object" states="draft,in_progress" class="oe_highlight"/>-->
-                    <field name="state" widget="statusbar" statusbar_visible="draft,uploaded"/>
-                </header>
-                <sheet>
-                    <h1>Record</h1>
-                    <h5>No.</h5>
-                     <h3><field name="name"/></h3>
-                    <group>
-
-                        <field name="nama_record"/>
-                    </group>
-                    <group>
-
+                        <!--<button name="cancel" string="Decline" type="object" states="draft,in_progress" class="oe_highlight"/>-->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,uploaded"/>
+                    </header>
+                    <sheet>
+                        <h1>Record</h1>
+                        <h5>No.</h5>
+                        <h3>
+                            <field name="name"/>
+                        </h3>
                         <group>
-                            <field name="tanggal"/>
 
+                            <field name="nama_record"/>
                         </group>
                         <group>
 
-                            <field name="pembuat"/>
+                            <group>
+                                <field name="tanggal"/>
+
+                            </group>
+                            <group>
+
+                                <field name="pembuat"/>
+                            </group>
+
+                        </group>
+                        <group>
+                            <field name="dept" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+
+                            <field name="jenis" options="{'no_quick_create': True, 'no_create_edit': True}"
+                                   context="{'form_view_ref': 'document_page.view_wiki_form'}"/>
+
                         </group>
 
-                    </group>
-                    <group>
-                        <field name="dept"  options="{'no_quick_create': True, 'no_create_edit': True}"/>
-
-                        <field name="jenis"  options="{'no_quick_create': True, 'no_create_edit': True}" context="{'form_view_ref': 'document_page.view_wiki_form'}"/>
-
-                    </group>
-
-                    <separator string="Attachment"/>
-                    <br/>
-                    <button name="download_doc" string="Download" type="object"
-                            groups="mgmtsystem.group_mgmtsystem_user" class="oe_inline oe_highlight"
-                            attrs="{'invisible':[('state','=','draft')]}"/>
-                    <field name="attach_record" nolabel="1"  widget="many2many_binary"  attrs="{'invisible':[('state','=','uploaded')]}"/>
+                        <separator string="Attachment"/>
+                        <br/>
+                        <button name="download_doc" string="Download" type="object"
+                                class="oe_inline oe_highlight"
+                                attrs="{'invisible':[('state','=','draft')]}"/>
+                        <field name="attach_record" nolabel="1" widget="many2many_binary"
+                               attrs="{'invisible':[('state','=','uploaded')]}"/>
 
 
-                </sheet>
-                 <!--<div class="oe_chatter">-->
+                    </sheet>
+                    <!--<div class="oe_chatter">-->
                     <!--<field name="message_follower_ids" widget="mail_followers"/>-->
                     <!--<field name="message_ids" widget="mail_thread"/>-->
-                <!--</div>-->
-            </form>
-        </field>
-    </record>
+                    <!--</div>-->
+                </form>
+            </field>
+        </record>
 
+        <record id="view_record_document_filter" model="ir.ui.view">
+            <field name="name">record.document.search</field>
+            <field name="model">record.document</field>
+            <field name="arch" type="xml">
+                <search string="Employees">
+                    <field name="name" string="Name"
+                           filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
 
-    <record id="record_document_tree_iso" model="ir.ui.view">
-        <field name="name">record.document.tree</field>
-        <field name="model">record.document</field>
-        <field name="arch" type="xml">
-            <tree string="Record Document">
-                <field name="name"/>
-                <field name="nama_record"/>
-                <field name="tanggal"/>
-                <field name="jenis"/>
-                <field name="pembuat"/>
-                <field name="state"/>
-            </tree>
-        </field>
-    </record>
-    <record id="record_document_action_iso" model="ir.actions.act_window">
-        <field name="name">Record Document</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">record.document</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="record_document_tree_iso"/>
-    </record>
+                </search>
+            </field>
+        </record>
+        <record id="record_document_tree_iso" model="ir.ui.view">
+            <field name="name">record.document.tree</field>
+            <field name="model">record.document</field>
+            <field name="arch" type="xml">
+                <tree string="Record Document">
+                    <field name="name"/>
+                    <field name="nama_record"/>
+                    <field name="tanggal"/>
+                    <field name="jenis"/>
+                    <field name="pembuat"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="record_document_action_iso" model="ir.actions.act_window">
+            <field name="name">Record Document</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">record.document</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="record_document_tree_iso"/>
+            <field name="search_view_id" ref="view_record_document_filter"/>
+        </record>
 
-    <menuitem id="menu_document_record" name="Record"
-			parent="knowledge.menu_document_root" sequence="11" groups="base.group_user"
-			 />
-    <menuitem action="record_document_action_iso" id="menu_record_document_request_iso"
-        parent="menu_document_record" sequence="6" groups="base.group_user" />
+        <menuitem id="menu_document_record" name="Record"
+                  parent="knowledge.menu_document_root" sequence="11" groups="base.group_user"
+        />
+        <menuitem action="record_document_action_iso" id="menu_record_document_request_iso"
+                  parent="menu_document_record" sequence="6" groups="base.group_user"/>
 
 
     </data>

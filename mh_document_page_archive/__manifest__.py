@@ -1,5 +1,5 @@
 {
-    'name': 'Adding Archive For Document Page',
+    'name': 'Document Page Archive',
     'version': '14.0',
     'summary': 'Adding Archive For Document Page',
     'description': 'Adding Archive For Document Page',
@@ -9,6 +9,7 @@
     'depends': ['document_page','hr'],
     'data': ['views/document_page_view.xml',
              'views/document_record_view.xml',
+             'data/seq_opl.xml',
              'security/ir.model.access.csv'],
     'installable': True,
     'auto_install': False

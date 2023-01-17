@@ -339,15 +339,21 @@ class EmployeeExcelReportController(http.Controller):
             sheet.write(baris, 3, emp1.nik or '', text_style)
             sheet.write(baris, 4, emp1.company_id.company_registry or '', text_style)
             rm = ''
-            db = ''
             erm = ''
+            dbarray=[]
+            rmarray=[]
+            ermarray=[]
             if emp1.dp_id:
-                dp = emp1.dp_id.name
-                if emp1.dp_id.rm_id:
-                    rm = emp1.dp_id.rm_id.name
-                    if emp1.dp_id.rm_id.erm_id:
-                        erm = emp1.dp_id.rm_id.erm_id.name
-
+                for d in emp1.dp_id:
+                    if d.name not in dbarray:
+                        dbarray.append(d.name)
+                    if d.rm_id.name not in rmarray:
+                        rmarray.append(d.rm_id.name)
+                        if d.rm_id.erm_id.name not in ermarray:
+                            ermarray.append(d.rm_id.erm_id.name )
+            dp=','.join(dbarray)
+            rm=','.join(rmarray)
+            erm=','.join(ermarray)
             sheet.write(baris, 5, erm, text_style)
             sheet.write(baris, 6, rm, text_style)
             sheet.write(baris, 7, dp, text_style)

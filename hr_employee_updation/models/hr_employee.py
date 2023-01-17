@@ -140,6 +140,22 @@ class HrEmployee(models.Model):
                               )
             self.fam_ids = [(6, 0, 0)] + lines_info
 
+    def toggle_active(self):
+        for emp in self:
+            if emp.active:
+                emp.active=False
+            else:
+                emp.active=True
+        unarchived_employees = self.filtered(lambda employee: employee.active)
+        unarchived_employees.write({
+            'departure_reason': False,
+            'departure_description': False,
+            'departure_date': False
+        })
+        archived_addresses = unarchived_employees.mapped('address_home_id').filtered(lambda addr: not addr.active)
+        archived_addresses.toggle_active()
+
+        return True
 
 class EmployeeRelationInfo(models.Model):
     """Table for keep employee family information"""

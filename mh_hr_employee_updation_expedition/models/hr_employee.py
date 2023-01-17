@@ -10,7 +10,8 @@ class HrEmployee(models.Model):
     code_mitra = fields.Char("Partner Code",default="KRIAN081")
 
     vendor_id = fields.Many2one('res.partner', 'Vendor')
-    dp_id = fields.Many2one('dp.location', 'DP')
+    dp_id = fields.Many2many('dp.location', 'hr_employee_dp_rel', 'employee_id', 'dp_id', 'DP')
+    # dp_id = fields.Many2one('dp.location', 'DP')
     joining_kna_date = fields.Date(string='KNA Joining Date',)
     divisi = fields.Char("Division",default="Region")
     status = fields.Char("Employee Status",default="Mitra Aktif")
@@ -35,4 +36,4 @@ class DpLocation(models.Model):
 
     name = fields.Char("Name")
     code = fields.Char("Code")
-    rm_id = fields.Many2one('rm.location', 'ERM')
+    rm_id = fields.Many2one('rm.location', 'RM')

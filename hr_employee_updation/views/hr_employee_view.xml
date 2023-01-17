@@ -3,14 +3,25 @@
     <data>
         <menuitem id="employee_report_menu" name="Reports" sequence="30"
                   groups="hr.group_hr_manager,hr.group_hr_user"/>
+
         <menuitem id="menu_hr_management" name="HR Management" parent="hr.menu_hr_root" sequence="5"
                   groups="hr.group_hr_manager,hr.group_hr_user"/>
+
         <record model="ir.ui.view" id="hr_employee_inherit_form_view">
 
             <field name="name">hr.employee.form.view</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
+                <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+
+                                <field name="active"/>
+                                <span attrs="{'invisible': [('active', '=', True)]}">Inactive</span>
+                                <span attrs="{'invisible': [('active', '=', False)]}">Active</span>
+                            </button>
+                        </div>
                 <xpath expr="//page[@name='personal_information']/group" position="after">
                     <group name="fam_ids" colspan="4" string="Dependence Details">
                         <field name="fam_ids">
@@ -24,7 +35,7 @@
                     </group>
                 </xpath>
                 <field name="job_title" position="replace">
-                    <field name="nik"/>
+                    <field name="nik"  placeholder="NIK" />
                 </field>
                 <field name="user_id" position="after">
                     <field name="joining_date"/>
