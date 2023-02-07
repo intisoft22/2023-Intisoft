@@ -9,7 +9,7 @@
                 <search string="Search information">
                     <field name="employee_name"/>
                     <field name="department_name"/>
-                    <field name="joined_date"/>
+                    <field name="date"/>
                     <field name="discipline_reason"/>
                     <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
                     <filter string="Waiting Explanation" name="explain" domain="[('state','=','explain')]"/>
@@ -72,7 +72,7 @@
                             <group>
                                 <field name="department_name" required="True"
                                        attrs="{'readonly': [('state','=','action')]}" groups="hr.group_hr_manager"/>
-                                <field name="joined_date" string="Joined Date"/>
+                                <field name="date" string="Date"/>
                                 <field name="read_only" invisible="True"/>
                                 <field name="warning" invisible="True"/>
                             </group>

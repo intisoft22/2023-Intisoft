@@ -47,7 +47,6 @@
                                 <field name="read_only" invisible="1"/>
                                 <field name="employee_id"
                                        attrs="{'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>
-                                <field name="department_id" readonly="1" force_save="1"/>
                                 <field name="employee_contract"  readonly="1" force_save="1"/>
                             </group>
                             <group string="Dates">
@@ -55,11 +54,13 @@
                                 <field name="promotion_type" attrs="{'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>
                             </group>
                             <group string="Job">
+                                <field name="department_id" readonly="1" force_save="1"/>
                                 <field name="previous_job_id" readonly="1" force_save="1"/>
                                 <field name="previous_struct_id" readonly="1" force_save="1"/>
                                 <field name="previous_salary" readonly="1" force_save="1"/>
                             </group>
                             <group string="New Job">
+                                <field name="new_department_id" attrs="{'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>
                                 <field name="new_job_id" attrs="{'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>
                                 <field name="change_salary" attrs="{'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>
                                 <field name="new_struct_id" attrs="{'invisible':[('change_salary','!=',True)],'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>

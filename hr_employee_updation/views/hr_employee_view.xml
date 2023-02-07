@@ -39,7 +39,7 @@
                 </field>
                 <field name="user_id" position="after">
                     <field name="joining_date"/>
-                    <field name="resign_date"/>
+<!--                    <field name="resign_date"/>-->
                     <field name="contract_type"/>
                 </field>
                 <field name="identification_id" position="replace"/>

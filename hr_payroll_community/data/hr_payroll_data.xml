@@ -66,6 +66,14 @@
             <field name="code">Other</field>
         </record>
 
+        <record id="FEE" model="hr.salary.rule.category">
+            <field name="name">Fee</field>
+            <field name="code">FEE</field>
+        </record>
+        <record id="TAX" model="hr.salary.rule.category">
+            <field name="name">tax</field>
+            <field name="code">TAX</field>
+        </record>
 
 <!--        <record id="DEDUCTION" model="hr.salary.rule.category">-->
 <!--            <field name="name">Deduction</field>-->

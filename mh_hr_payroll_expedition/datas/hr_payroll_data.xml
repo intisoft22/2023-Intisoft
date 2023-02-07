@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Salary Structure -->
+
+        <record id="structure_base_reguler_os" model="hr.payroll.structure">
+            <field name="code">BASEREGOS</field>
+            <field name="name">Base for regular OS</field>
+            <field name="rule_ids" eval="[(6, 0, [
+            ref('hr_payroll_community.hr_rule_basic'),
+             ref('mh_hr_payroll_expedition.hr_rule_absence_deduction_reg_os'),
+            ref('mh_hr_employee_overtime_payroll_fix.hr_rule_overtime'),
+            ref('mh_hr_payroll_expedition.hr_rule_reward_reg_os'),
+             ref('hr_payroll_community.hr_rule_taxable'),
+             ref('mh_hr_payroll_expedition.hr_rule_late_deduction_reg_os'),
+             ref('hr_payroll_community.hr_rule_net'),
+             ref('mh_hr_payroll_expedition.hr_rule_fee_management_reg_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_tax_management_reg_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_company_management_reg_os'),
+             ])]"
+                   />
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="structure_base_kurir_os" model="hr.payroll.structure">
+            <field name="code">BASEKURIROS</field>
+            <field name="name">Base for Kurir OS</field>
+            <field name="rule_ids" eval="[(6, 0, [
+            ref('mh_hr_payroll_expedition.hr_rule_pp_cash_intercity_kurir_os'),
+            ref('mh_hr_payroll_expedition.hr_rule_pp_cash_outcity_kurir_os'),
+            ref('mh_hr_payroll_expedition.hr_rule_pp_pm_kurir_os'),
+            ref('mh_hr_payroll_expedition.hr_rule_cc_cash_kurir_os'),
+            ref('mh_hr_payroll_expedition.hr_rule_total_basic_kurir_os'),
+            ref('mh_hr_payroll_expedition.hr_rule_pp_cash_intercity_insentif_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_pp_cash_outcity_insentif_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_pp_pm_insentif_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_cc_cash_insentif_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_total_insentif_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_deliv_intercity_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_deliv_outcity_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_total_deliv_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_total_gross_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_denda_deduction_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_reward_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_totalemp_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_fee_management_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_tax_management_kurir_os'),
+             ref('mh_hr_payroll_expedition.hr_rule_company_management_kurir_os'),
+             ])]"
+                   />
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="structure_base_reguler" model="hr.payroll.structure">
+            <field name="code">BASEREG</field>
+            <field name="name">Base for regular</field>
+            <field name="rule_ids" eval="[(6, 0, [
+            ref('hr_payroll_community.hr_rule_basic'),
+             ref('mh_hr_payroll_expedition.hr_rule_tunjangan_keahlihan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_tunjangan_jabatan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_tunjangan_masakerja_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_tunjangan_lainnya_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_deposit_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_tambahan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_absence_deduction_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_insentif_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_potongan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_total_gross_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_total_gross_tahun_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_thr_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_total_gross_thr_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_bi_jab_tahun_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_bi_jab_tahun_thr_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_jamsostek_tk_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_jamsostek_pensiun_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_jamsostek_ks_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_jamsostek_total_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_jamsostek_total_tahun_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_gajibersih_tahun_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_gajibersih_tahun_thr_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_ptkp_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_pkp_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_pkp_thr_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_pph21_tahunan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_pph21_thr_tahunan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_pph21_bulanan_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_gajiditerima_reg'),
+             ref('mh_hr_payroll_expedition.hr_rule_gajiditerima_bulan_reg'),
+             ])]"
+                   />
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="structure_base_kurir" model="hr.payroll.structure">
+            <field name="code">BASEKURIR</field>
+            <field name="name">Base for kurir</field>
+            <field name="rule_ids" eval="[(6, 0, [
+            ref('mh_hr_payroll_expedition.hr_rule_basic_salary_kurir'),
+             ref('mh_hr_payroll_expedition.hr_rule_tunjangan_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_tambahan_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_potongan_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_total_gross_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_ptkp_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_pkp_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_pph21_kurir'),
+            ref('mh_hr_payroll_expedition.hr_rule_total_kurir'),
+             ])]"
+                   />
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+    </data>
+</odoo>

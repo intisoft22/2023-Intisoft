@@ -18,6 +18,9 @@ class EmployeePromotion(models.Model):
                                   help='Name of the employee for whom the request is creating', required=True,)
     department_id = fields.Many2one('hr.department', string="Department",
                                     help='Department of the employee', required=True,)
+
+    new_department_id = fields.Many2one('hr.department', string="New Department",
+                                    help='Department of the employee', required=True,)
     promotion_date = fields.Date(string="Promotion Date",
                                  help='Date on which the promotion the employee.',
                                  track_visibility="always", required=True,)
@@ -47,7 +50,7 @@ class EmployeePromotion(models.Model):
     def _compute_read_only(self):
         """ Use this function to check weather the user has the permission to change the employee"""
         res_user = self.env['res.users'].search([('id', '=', self._uid)])
-        print(res_user.has_group('hr.group_hr_user'))
+        # print(res_user.has_group('hr.group_hr_user'))
         if res_user.has_group('hr.group_hr_user'):
             self.read_only = True
         else:
@@ -91,11 +94,13 @@ class EmployeePromotion(models.Model):
 
             rec.state = 'approved'
             rec.employee_id.job_id=rec.new_job_id.id
+            rec.employee_id.department_id=rec.new_department_id.id
 
             no_of_contract = self.env['hr.contract'].search([('employee_id', '=', rec.employee_id.id),('state','=','open')])
             if no_of_contract:
                 for contract in no_of_contract:
                     contract.job_id =rec.new_job_id.id
+                    contract.department_id =rec.new_department_id.id
                     if rec.change_salary:
                         contract.struct_id =rec.new_struct_id
                         contract.wage =rec.new_salary

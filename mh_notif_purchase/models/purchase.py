@@ -69,7 +69,7 @@ class PurchaseOrder(models.Model):
         groups = self.env['res.groups'].search([('id', '=', qmr)])
         for g in groups:
             for u in g.users:
-                print(u.name)
+                # print(u.name)
                 vals={
                     'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
                     'note': _(
@@ -79,7 +79,7 @@ class PurchaseOrder(models.Model):
                     'date_deadline': datetime.today(),
                     'res_model_id': self.env.ref('purchase.model_purchase_order').id,
                 }
-                print(vals)
+                # print(vals)
                 activity = self.env['mail.activity'].sudo().create(vals)
                 activity.sudo().write({'user_id': u.id,})
                 # activity._onchange_activity_type_id()

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!--Adding a salary rule for loan-->
+	<data noupdate="0">
+
+		<record id="hr_rule_pp_cash_intercity_kurir_os" model="hr.salary.rule">
+            <field name="code">PPCI</field>
+            <field name="name">PP CASH INTERCITY</field>
+            <field name="category_id" ref="hr_payroll_community.BASIC"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PPCI and + (inputs.PPCI.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="hr_rule_input_pp_cash_intercity_kurir_os" model="hr.rule.input">
+            <field name="code">PPCI</field>
+            <field name="name">PP CASH INTERCITY</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_pp_cash_intercity_kurir_os"/>
+        </record>
+		<record id="hr_rule_pp_cash_outcity_kurir_os" model="hr.salary.rule">
+            <field name="code">PPCO</field>
+            <field name="name">PP CASH OUTCITY</field>
+            <field name="category_id" ref="hr_payroll_community.BASIC"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PPCO and + (inputs.PPCO.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="hr_rule_input_pp_cash_outcity_kurir_os" model="hr.rule.input">
+            <field name="code">PPCO</field>
+            <field name="name">PP CASH OUTCITY</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_pp_cash_outcity_kurir_os"/>
+        </record>
+		<record id="hr_rule_pp_pm_kurir_os" model="hr.salary.rule">
+            <field name="code">PPPM</field>
+            <field name="name">PP PM</field>
+            <field name="category_id" ref="hr_payroll_community.BASIC"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PPPM and + (inputs.PPPM.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="hr_rule_input_pp_pm_kurir_os" model="hr.rule.input">
+            <field name="code">PPPM</field>
+            <field name="name">PP PM</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_pp_pm_kurir_os"/>
+        </record>
+		<record id="hr_rule_cc_cash_kurir_os" model="hr.salary.rule">
+            <field name="code">CCC</field>
+            <field name="name">CC Cash</field>
+            <field name="category_id" ref="hr_payroll_community.BASIC"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.CCC and + (inputs.CCC.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="hr_rule_input_cc_cash_kurir_os" model="hr.rule.input">
+            <field name="code">CCC</field>
+            <field name="name">CC Cash</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_cc_cash_kurir_os"/>
+        </record>
+
+		<record id="hr_rule_total_basic_kurir_os" model="hr.salary.rule">
+            <field name="code">TOTBASIC</field>
+            <field name="name">TOTAL Basic</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTBASIC"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.BASIC )
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="21"/>
+        </record>
+
+
+
+        <record id="hr_rule_pp_cash_intercity_insentif_kurir_os" model="hr.salary.rule">
+            <field name="code">IPPCI</field>
+            <field name="name">Insentif PP CASH INTERCITY</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.INS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PPCI and + (inputs.PPCI.amount*(2/100))</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="22"/>
+        </record>
+
+		<record id="hr_rule_pp_cash_outcity_insentif_kurir_os" model="hr.salary.rule">
+            <field name="code">IPPCO</field>
+            <field name="name">Insentif PP CASH OUTCITY</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.INS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PPCO and + (inputs.PPCO.amount*(10/100))</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="22"/>
+        </record>
+
+		<record id="hr_rule_pp_pm_insentif_kurir_os" model="hr.salary.rule">
+            <field name="code">IPPPM</field>
+            <field name="name">Insentif PP PM</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.INS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.PPPM and + (inputs.PPPM.amount*(3/100))</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="22"/>
+        </record>
+		<record id="hr_rule_cc_cash_insentif_kurir_os" model="hr.salary.rule">
+            <field name="code">ICCC</field>
+            <field name="name">Insentif CC Cash</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.INS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.CCC and + (inputs.CCC.amount*(5/100))</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="22"/>
+        </record>
+
+		<record id="hr_rule_total_insentif_kurir_os" model="hr.salary.rule">
+            <field name="code">TOTINS</field>
+            <field name="name">TOTAL Insentif</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTINS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.INS )
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="23"/>
+        </record>
+
+		<record id="hr_rule_deliv_intercity_kurir_os" model="hr.salary.rule">
+            <field name="code">DIC</field>
+            <field name="name">Deliv Intercity</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.DELIV"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.DIC and + (inputs.DIC.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="24"/>
+        </record>
+
+        <record id="hr_rule_input_deliv_intercity_kurir_os" model="hr.rule.input">
+            <field name="code">DIC</field>
+            <field name="name">Deliv Intercity</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_deliv_intercity_kurir_os"/>
+        </record>
+		<record id="hr_rule_deliv_outcity_kurir_os" model="hr.salary.rule">
+            <field name="code">DOC</field>
+            <field name="name">Deliv Outcity</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.DELIV"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.DOC and + (inputs.DOC.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="24"/>
+        </record>
+
+        <record id="hr_rule_input_deliv_outcity_kurir_os" model="hr.rule.input">
+            <field name="code">DOC</field>
+            <field name="name">Deliv Outcity</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_deliv_outcity_kurir_os"/>
+        </record>
+
+		<record id="hr_rule_total_deliv_kurir_os" model="hr.salary.rule">
+            <field name="code">TOTDELIV</field>
+            <field name="name">TOTAL Delivery</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTDELIV"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.DELIV )
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="25"/>
+        </record>
+		<record id="hr_rule_total_gross_kurir_os" model="hr.salary.rule">
+            <field name="code">TOTGROSS</field>
+            <field name="name">TOTAL Gross</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTGROSS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+totaldeliv=(categories.DELIV * contract.rate_deliv)
+result = totaldeliv+ categories.TOTINS
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="26"/>
+        </record>
+
+
+
+        <record id="hr_rule_denda_deduction_kurir_os" model="hr.salary.rule">
+            <field name="code">DENDA</field>
+            <field name="name">DENDA</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.DENDA and + (inputs.DENDA.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="27"/>
+        </record>
+
+        <record id="hr_rule_input_denda_deduction_kurir_os" model="hr.rule.input">
+            <field name="code">DENDA</field>
+            <field name="name">DENDA</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_denda_deduction_kurir_os"/>
+        </record>
+		<record id="hr_rule_reward_kurir_os" model="hr.salary.rule">
+            <field name="code">REWARDK</field>
+            <field name="name">Reward kurir</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.REWARDK and + (inputs.REWARDK.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+        <record id="hr_rule_input_reward_kurir_os" model="hr.rule.input">
+            <field name="code">REWARDK</field>
+            <field name="name">Reward kurir</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_reward_kurir_os"/>
+        </record>
+
+        <record id="hr_rule_totalemp_kurir_os" model="hr.salary.rule">
+            <field name="name">TOTAL by employee</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">TOTALEMP</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTALEMP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="sequence" eval="400"/>
+            <field name="amount_python_compute">result = categories.TOTGROSS + categories.ALW -  categories.DED</field>
+        </record>
+
+		<record id="hr_rule_fee_management_kurir_os" model="hr.salary.rule">
+            <field name="code">FEEMNGK</field>
+            <field name="name">Fee Management</field>
+            <field name="category_id" ref="hr_payroll_community.FEE"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.DELIV) * contract.rate_fee
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="810"/>
+        </record>
+		<record id="hr_rule_tax_management_kurir_os" model="hr.salary.rule">
+            <field name="code">TAX</field>
+            <field name="name">TAX 11 %</field>
+            <field name="category_id" ref="hr_payroll_community.TAX"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.FEE) * (11/100)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="820"/>
+        </record>
+		<record id="hr_rule_company_management_kurir_os" model="hr.salary.rule">
+            <field name="code">TOTAL</field>
+            <field name="name">Total by Company</field>
+            <field name="category_id" ref="hr_payroll_community.COMP"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.TOTALEMP + categories.FEE +categories.TAX)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="830"/>
+        </record>
+
+	</data>
+</odoo>

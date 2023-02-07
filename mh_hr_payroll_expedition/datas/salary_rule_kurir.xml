@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!--Adding a salary rule for loan-->
+	<data noupdate="0">
+
+		<record id="hr_rule_basic_salary_kurir" model="hr.salary.rule">
+            <field name="code">BS</field>
+            <field name="name">Basic</field>
+            <field name="category_id" ref="hr_payroll_community.BASIC"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.BS and + (inputs.BS.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="hr_rule_input_basic_salary_kurir" model="hr.rule.input">
+            <field name="code">BS</field>
+            <field name="name">Basic Salary</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_basic_salary_kurir"/>
+        </record>
+		<record id="hr_rule_tunjangan_kurir" model="hr.salary.rule">
+            <field name="code">TNJ</field>
+            <field name="name">Tunjangan</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.TNJ and + (inputs.TNJ.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="21"/>
+        </record>
+
+        <record id="hr_rule_input_pp_tunjangan_kurir" model="hr.rule.input">
+            <field name="code">TNJ</field>
+            <field name="name">Tunjangan</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_tunjangan_kurir"/>
+        </record>
+		<record id="hr_rule_tambahan_kurir" model="hr.salary.rule">
+            <field name="code">ADD</field>
+            <field name="name">Tambahan</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.ADD and + (inputs.ADD.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="22"/>
+        </record>
+
+        <record id="hr_rule_input_tambahan_kurir" model="hr.rule.input">
+            <field name="code">ADD</field>
+            <field name="name">Tambahan</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_tambahan_kurir"/>
+        </record>
+		<record id="hr_rule_thr_kurir" model="hr.salary.rule">
+            <field name="code">THR</field>
+            <field name="name">THR</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.THR and + (inputs.THR.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="25"/>
+        </record>
+
+        <record id="hr_rule_input_thr_kurir" model="hr.rule.input">
+            <field name="code">THR</field>
+            <field name="name">THR</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_thr_kurir"/>
+        </record>
+		<record id="hr_rule_potongan_kurir" model="hr.salary.rule">
+            <field name="code">DEDK</field>
+            <field name="name">Potongan</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.DEDK and + (inputs.DEDK.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="26"/>
+        </record>
+
+        <record id="hr_rule_input_potongan_kurir" model="hr.rule.input">
+            <field name="code">DEDK</field>
+            <field name="name">Potongan</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_potongan_kurir"/>
+        </record>
+
+		<record id="hr_rule_total_gross_kurir" model="hr.salary.rule">
+            <field name="code">GROSSB</field>
+            <field name="name">Gross/Bulan</field>
+            <field name="category_id" ref="hr_payroll_community.GROSS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.BASIC + categories.ALW - categories.DED)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="26"/>
+        </record>
+
+
+
+        <record id="hr_rule_ptkp_kurir" model="hr.salary.rule">
+            <field name="code">PTKP</field>
+            <field name="name">PTKP</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PTKP"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+ptkp=54000000
+if employee.npwp_state == 'k0' and employee.gender=='male':
+    ptkp=58500000
+if employee.npwp_state == 'k1' and employee.gender=='male':
+    ptkp=63000000
+if employee.npwp_state == 'k2' and employee.gender=='male':
+    ptkp=67500000
+if employee.npwp_state == 'k3' and employee.gender=='male':
+    ptkp=72000000
+if employee.npwp_state == 'tk0':
+    ptkp=54000000
+if employee.npwp_state == 'tk1':
+    ptkp=63000000
+if employee.npwp_state == 'tk2':
+    ptkp=67500000
+if employee.npwp_state == 'tk3':
+    ptkp=72000000
+
+result = ptkp/12
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="27"/>
+        </record>
+
+
+		<record id="hr_rule_pkp_kurir" model="hr.salary.rule">
+            <field name="code">PKP</field>
+            <field name="name">PKP</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PKP"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+gross=categories.GROSS
+ptkp=categories.PTKP
+pkp = 0
+if gross>ptkp:
+    pkp = categories.GROSS - categories.PTKP
+else:
+    pkp=0
+result=pkp
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="28"/>
+        </record>
+
+		<record id="hr_rule_pph21_kurir" model="hr.salary.rule">
+            <field name="code">PPH21</field>
+            <field name="name">PPH21</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PPH"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+pkp=categories.PKP
+pph=0
+if employee.npwp_no:
+
+    if 60000000 >= pkp:
+        pph=(5/100)*pkp
+    elif 250000000 >= pkp:
+        pph=((15/100)*(pkp-60000000))+3000000
+    elif 500000000 >= pkp:
+        pph=((25/100)*(pkp-250000000))+3000000+28500000
+    elif 5000000000>=pkp:
+        pph=((30/100)*(pkp-500000000))+3000000+28500000+62500000
+    else:
+        pph=((35/100)*(pkp-5000000000))+3000000+28500000+62500000+1350000000
+    pph21=pph
+else:
+    if 60000000 >= pkp:
+        pph=(5/100)*pkp
+    elif 250000000 >= pkp:
+        pph=((15/100)*(pkp-60000000))+3000000
+    elif 500000000 >= pkp:
+        pph=((25/100)*(pkp-250000000))+3000000+28500000
+    elif 5000000000>=pkp:
+        pph=((30/100)*(pkp-500000000))+3000000+28500000+62500000
+    else:
+        pph=((35/100)*(pkp-5000000000))+3000000+28500000+62500000+1350000000
+    pph21=pph*(120/100)
+
+
+result = pph21
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="29"/>
+        </record>
+		<record id="hr_rule_total_kurir" model="hr.salary.rule">
+            <field name="code">NET</field>
+            <field name="name">NET</field>
+            <field name="category_id" ref="hr_payroll_community.NET"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.GROSS - categories.PPH</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+
+	</data>
+</odoo>

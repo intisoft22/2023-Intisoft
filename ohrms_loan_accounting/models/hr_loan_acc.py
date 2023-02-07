@@ -169,9 +169,9 @@ class HrLoanLineAcc(models.Model):
                 'date': timenow,
                 'line_ids': [(0, 0, debit_vals), (0, 0, credit_vals)]
             }
-            print("0000",vals)
+            # print("0000",vals)
             move = self.env['account.move'].create(vals)
-            print(vals)
+            # print(vals)
             move.post()
         return True
 

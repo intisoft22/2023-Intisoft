@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!--Adding a salary rule for loan-->
+	<data noupdate="0">
+
+		<record id="hr_rule_absence_deduction_reg_os" model="hr.salary.rule">
+            <field name="code">ABSDED</field>
+            <field name="name">Absence Deduction</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+jumlahijin=0.0
+if worked_days.SICK:
+    jumlahijin+=worked_days.SICK.number_of_days
+if worked_days.ALPHA:
+    jumlahijin+=worked_days.ALPHA.number_of_days
+if worked_days.ALPHA2:
+    jumlahijin+=worked_days.ALPHA2.number_of_days
+if worked_days.UNPAID:
+    jumlahijin+=worked_days.UNPAID.number_of_days
+if worked_days.UNPAID2:
+    jumlahijin+=worked_days.UNPAID2.number_of_days
+result = (jumlahijin) * (contract.wage/26)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+
+		<record id="hr_rule_late_deduction_reg_os" model="hr.salary.rule">
+            <field name="code">LATEDED</field>
+            <field name="name">Late Deduction</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.LATEDED and + (inputs.LATEDED.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="hr_rule_input_late_deduction_reg_os" model="hr.rule.input">
+            <field name="code">LATEDED</field>
+            <field name="name">Late Deduction</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_late_deduction_reg_os"/>
+        </record>
+		<record id="hr_rule_reward_reg_os" model="hr.salary.rule">
+            <field name="code">REWARD</field>
+            <field name="name">Reward</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.REWARD and + (inputs.REWARD.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+        <record id="hr_rule_input_reward_reg_os" model="hr.rule.input">
+            <field name="code">REWARD</field>
+            <field name="name">Reward</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_reward_reg_os"/>
+        </record>
+
+		<record id="hr_rule_fee_management_reg_os" model="hr.salary.rule">
+            <field name="code">FEEMNG</field>
+            <field name="name">Fee Management</field>
+            <field name="category_id" ref="hr_payroll_community.FEE"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.NET) * (5/100)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="810"/>
+        </record>
+		<record id="hr_rule_tax_management_reg_os" model="hr.salary.rule">
+            <field name="code">TAX</field>
+            <field name="name">TAX 11 %</field>
+            <field name="category_id" ref="hr_payroll_community.TAX"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.FEE) * (11/100)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="820"/>
+        </record>
+		<record id="hr_rule_company_management_reg_os" model="hr.salary.rule">
+            <field name="code">TOTAL</field>
+            <field name="name">Total by Company</field>
+            <field name="category_id" ref="hr_payroll_community.COMP"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.NET + categories.FEE +categories.TAX)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="830"/>
+        </record>
+
+	</data>
+</odoo>

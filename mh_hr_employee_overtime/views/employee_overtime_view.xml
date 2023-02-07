@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="employee_overtime_tree" model="ir.ui.view">
+            <field name="name">employee.overtime.tree</field>
+            <field name="model">employee.overtime</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Employee overtime">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="employee_overtime_form" model="ir.ui.view">
+            <field name="name">employee.overtime.form</field>
+            <field name="model">employee.overtime</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Employee overtime">
+                    <header>
+                        <button string="Confirm" type="object" name="confirm_overtime" states='draft'
+                                class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel_overtime" states='draft'/>
+                        <button string="Approve" type="object" groups="hr.group_hr_user" name="approve_overtime"
+                                states='confirm' class="oe_highlight"/>
+                        <button string="Reject" type="object" groups="hr.group_hr_user" name="reject_overtime"
+                                states='confirm'/>
+                        <button string="Set to Draft" type="object" groups="hr.group_hr_manager" name="reset_to_draft"
+                                states='approved'/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                                <field name="date" />
+
+
+
+                        </group>
+                        <group>
+                            <field name="line_ids" nolabel="1" context="{'default_date':date}">
+
+                                <tree editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="department_id"/>
+                                    <field name="date"/>
+                                    <field name="start_hour"  widget="float_time"/>
+                                    <field name="end_hour" widget="float_time"/>
+                                    <field name="duration" widget="float_time"/>
+                                    <field name="category"/>
+                                    <field name="state" />
+
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="search_employee_overtime" model="ir.ui.view">
+            <field name="name">employee.overtime.search</field>
+            <field name="model">employee.overtime</field>
+            <field name="arch" type="xml">
+                <search string="Employee overtime">
+                    <group expand="0" string="Group By">
+                        <filter name="date" string="Date" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="view_employee_overtime">
+            <field name="name">Employee overtime</field>
+            <field name="res_model">employee.overtime</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="search_employee_overtime"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Employee overtime Form
+                </p>
+            </field>
+        </record>
+        <menuitem id="employee_overtime" name="overtime"
+                  groups="base.group_user"
+                  web_icon="mh_hr_employee_overtime,static/description/overtime_web.png"
+                  sequence="21"/>
+        <menuitem id="employee_overtime_request" parent="employee_overtime" name="overtime"
+                  action="view_employee_overtime" groups="hr.group_hr_user" sequence="4"/>
+
+        <record id="view_employee_form_overtime_hr" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <div name="button_box" position="inside">
+
+                    <button name="%(mh_hr_employee_overtime.view_employee_overtime)d"
+                            type="action"
+                            class="oe_stat_button"
+                            icon="fa-clock-o  "
+                            context="{'search_default_employee_id': active_id}"
+                            groups="base.group_user"
+                            help="overtime">
+                        <div class="o_field_widget o_stat_info">
+
+                            <span class="o_stat_text">
+                                overtime
+                            </span>
+                        </div>
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+

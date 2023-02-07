@@ -19,7 +19,7 @@ class HrCustody(models.Model):
     def _compute_read_only(self):
         """ Use this function to check weather the user has the permission to change the employee"""
         res_user = self.env['res.users'].search([('id', '=', self._uid)])
-        print(res_user.has_group('hr.group_hr_user'))
+        # print(res_user.has_group('hr.group_hr_user'))
         if res_user.has_group('hr.group_hr_user'):
             self.read_only = True
         else:

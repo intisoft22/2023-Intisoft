@@ -136,65 +136,69 @@ class EmployeeExcelReportController(http.Controller):
 
         sheet.set_column(0, 0, 2.14)
         sheet.set_column(1, 1, 4.29)
-        sheet.set_column(2, 2, 15)
-        sheet.set_column(3, 3, 15)
-        sheet.set_column(4, 4, 15)
-        sheet.set_column(5, 5, 15)
-        sheet.set_column(6, 6, 15)
-        sheet.set_column(7, 7, 15)
-        sheet.set_column(8, 8, 15)
-        sheet.set_column(9, 9, 15)
-        sheet.set_column(10, 10, 15)
-        sheet.set_column(11, 11, 15)
-        sheet.set_column(12, 12, 15)
-        sheet.set_column(13, 13, 15)
-        sheet.set_column(14, 14, 15)
-        sheet.set_column(15, 15, 15)
-        sheet.set_column(16, 16, 15)
-        sheet.set_column(17, 17, 15)
-        sheet.set_column(18, 18, 15)
+        sheet.set_column(2, 2, 8.86)
+        sheet.set_column(3, 3, 10.29)
+        sheet.set_column(4, 4, 15.43)
+        sheet.set_column(5, 5, 13)
+        sheet.set_column(6, 6, 14.57)
+        sheet.set_column(7, 7, 19.29)
+        sheet.set_column(8, 8, 10.86)
+        sheet.set_column(9, 9, 10.86)
+        sheet.set_column(10, 10, 10.86)
+        sheet.set_column(11, 11, 10.86)
+        sheet.set_column(12, 12, 12.43)
+        sheet.set_column(13, 13, 12.43)
+        sheet.set_column(14, 14, 15.14)
+        sheet.set_column(15, 15, 10.71)
+        sheet.set_column(16, 16, 28.43)
+        sheet.set_column(17, 17, 11.43)
+        sheet.set_column(18, 18, 30.86)
         sheet.set_column(19, 19, 15)
-        sheet.set_column(20, 20, 15)
-        sheet.set_column(21, 21, 15)
-        sheet.set_column(22, 22, 15)
-        sheet.set_column(23, 23, 15)
-        sheet.set_column(24, 24, 15)
-        sheet.set_column(25, 25, 15)
-        sheet.set_column(26, 26, 15)
-        sheet.set_column(27, 27, 15)
+        sheet.set_column(20, 20, 13.43)
+        sheet.set_column(21, 21, 13.43)
+        sheet.set_column(22, 22, 13.43)
+        sheet.set_column(23, 23, 13.43)
+        sheet.set_column(24, 24, 17.43)
+        sheet.set_column(25, 25, 17.43)
+        sheet.set_column(26, 26, 17.43)
+        sheet.set_column(27, 27, 17.43)
         sheet.set_column(28, 28, 15)
         sheet.set_column(29, 29, 15)
         sheet.set_column(30, 30, 15)
         sheet.set_column(31, 31, 15)
-        sheet.set_column(32, 32, 15)
-        sheet.set_column(33, 33, 15)
-        sheet.set_column(34, 34, 15)
-        sheet.set_column(35, 35, 15)
-        sheet.set_column(36, 36, 15)
+        sheet.set_column(32, 32, 19)
+        sheet.set_column(33, 33, 19)
+        sheet.set_column(34, 34, 21)
+        sheet.set_column(35, 35, 5.71)
+        sheet.set_column(36, 36, 7.71)
         sheet.set_column(37, 37, 15)
         sheet.set_column(38, 38, 15)
         sheet.set_column(39, 39, 15)
-        sheet.set_column(40, 40, 15)
-        sheet.set_column(41, 41, 15)
-        sheet.set_column(42, 42, 15)
-        sheet.set_column(43, 43, 15)
-        sheet.set_column(44, 44, 15)
+        sheet.set_column(40, 40, 108.57)
+        sheet.set_column(41, 41, 108.57)
+        sheet.set_column(42, 42, 9)
+        sheet.set_column(43, 43, 19)
+        sheet.set_column(44, 44, 35)
         sheet.set_column(45, 45, 15)
         sheet.set_column(46, 46, 15)
-        sheet.set_column(47, 47, 15)
-        sheet.set_column(48, 48, 15)
+        sheet.set_column(47, 47, 34)
+        sheet.set_column(48, 48, 34)
         sheet.set_column(49, 49, 15)
         sheet.set_column(50, 50, 15)
-        sheet.set_column(51, 51, 15)
-        sheet.set_column(52, 52, 15)
-        sheet.set_column(53, 53, 15)
-        sheet.set_column(54, 54, 15)
-        sheet.set_column(55, 55, 15)
-        sheet.set_column(56, 56, 15)
+        sheet.set_column(51, 51, 93)
+        sheet.set_column(52, 52, 25)
+        sheet.set_column(53, 53, 25)
+        sheet.set_column(54, 54, 30)
+        sheet.set_column(55, 55, 20)
+        sheet.set_column(56, 56, 30)
         sheet.set_column(57, 57, 15)
-        sheet.set_column(58, 58, 15)
+        sheet.set_column(58, 58, 30)
         sheet.set_column(59, 59, 15)
+        sheet.set_column(60, 60, 30)
+        sheet.set_column(61, 61, 15)
         sheet.freeze_panes(4, 0)
+
+        sheet.set_row(3, 30)
         sheet.merge_range(0, 1, 1, 6, 'Reguler', header_style_top)
         sheet.merge_range(2, 1, 3, 1, 'No', header_style)
         sheet.merge_range(2, 2, 3, 2, 'NIK KNA', header_style)
@@ -325,16 +329,40 @@ class EmployeeExcelReportController(http.Controller):
         sheet.write(4, 60, '', header_style)
         sheet.write(4, 61, '', header_style)
         sheet.autofilter(4, 1, 4, 61)
-
-        domain_1 = [('vendor_id', '=', False), ('job_id.name', 'not ilike', 'Kurir')]
-        employee_1 = request.env['hr.employee'].search(domain_1, order='name ASC')
+        domain_1_2=['|',('active', '=', True), ('active', '=', False), ]
+        domain_1 = domain_1_2+[('vendor_id', '=', False), ('job_id.name', 'not ilike', 'Kurir')]
+        # print(domain_1)
+        employee_1 = request.env['hr.employee'].search(domain_1, order='nik ASC')
         no1 = 1
         baris = 5
 
         for emp1 in employee_1:
-            if emp1.resign_date:
-                text_style.set_bg_color('#ff0000')
-            sheet.write(baris, 1, no1, text_style)
+            # print(emp1.name)
+            # print(emp1.resign_date)
+            if str(emp1.resign_date)!='False':
+                text_stylemerah = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_stylemerah.set_text_wrap()
+                text_stylemerah.set_align('center')
+                text_stylemerah.set_align('vcenter')
+                text_stylemerah.set_font_size(10)
+                # print("masuk sini warna")
+                text_stylemerah.set_bg_color('#ff0000')
+                text_style=text_stylemerah
+            else:
+                text_styleputih = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_styleputih.set_text_wrap()
+                text_styleputih.set_align('center')
+                text_styleputih.set_align('vcenter')
+                text_styleputih.set_font_size(10)
+                # print("masuk putih")
+                text_styleputih.set_bg_color('#ffffff')
+                text_style=text_styleputih
+            # print(text_style)
+            sheet.write(baris, 1, str(no1), text_style)
             sheet.write(baris, 2, emp1.nik_kna or '', text_style)
             sheet.write(baris, 3, emp1.nik or '', text_style)
             sheet.write(baris, 4, emp1.company_id.company_registry or '', text_style)
@@ -371,18 +399,64 @@ class EmployeeExcelReportController(http.Controller):
                 centang_letter = 'V'
             sheet.write(baris, 17, centang_letter, text_style)
             sheet.write(baris, 18, emp1.company_id.name or '', text_style)
-            sheet.write(baris, 19, '', text_style)
-            sheet.write(baris, 20, '', text_style)
-            sheet.write(baris, 21, '', text_style)
-            sheet.write(baris, 22, '', text_style)
-            sheet.write(baris, 23, '', text_style)
-            sheet.write(baris, 24, '', text_style)
-            sheet.write(baris, 25, '', text_style)
-            sheet.write(baris, 26, '', text_style)
-            sheet.write(baris, 27, '', text_style)
-            sheet.write(baris, 28, '', text_style)
-            sheet.write(baris, 29, emp1.gender or '', text_style)
-            sheet.write(baris, 30, emp1.country_id.name or '', text_style)
+
+            domain_pmd =  [('employee_id', '=', emp1.id), ('state', '=', 'approved')]
+            employee_pmd_ids = request.env['employee.promotion'].search(domain_pmd, order='promotion_date DESC', limit=1)
+
+            if employee_pmd_ids:
+                sheet.write(baris, 19, employee_pmd_ids[0].promotion_date, text_style)
+                typepromosi='Mutasi'
+                if  employee_pmd_ids[0].promotion_type=='demotion':
+                    typepromosi='Demosi'
+                elif employee_pmd_ids[0].promotion_type=='promotion':
+                    typepromosi='Promosi'
+                sheet.write(baris, 20, typepromosi, text_style)
+                dppmdarray = []
+                if employee_pmd_ids.dp_id:
+                    for d in employee_pmd_ids[0].dp_id:
+                        dppmdarray.append(d.name)
+
+                dp_seblum = ','.join(dppmdarray)
+                sheet.write(baris, 21, dp_seblum, text_style)
+                sheet.write(baris, 22, employee_pmd_ids[0].divisi, text_style)
+                sheet.write(baris, 23, employee_pmd_ids[0].department_id.name, text_style)
+                sheet.write(baris, 24, employee_pmd_ids[0].previous_job_id.name, text_style)
+            else:
+
+                sheet.write(baris, 19, '', text_style)
+                sheet.write(baris, 20, '', text_style)
+                sheet.write(baris, 21, '', text_style)
+                sheet.write(baris, 22, '', text_style)
+                sheet.write(baris, 23, '', text_style)
+                sheet.write(baris, 24, '', text_style)
+            domain_sp = [('employee_name', '=', emp1.id), ('state', '=', 'action')]
+            employee_sp_ids = request.env['disciplinary.action'].search(domain_sp, order='date DESC', )
+            suratteguran=False
+            sp1=False
+            sp2=False
+            sp3=False
+            for sp in employee_sp_ids:
+                if sp.action.code=='SP1':
+                    sp1=sp.date
+                elif sp.action.code=='SP2':
+                    sp2=sp.date
+                elif sp.action.code=='SP3':
+                    sp3=sp.date
+                else:
+                    suratteguran=sp.date
+
+            sheet.write(baris, 25, suratteguran or '', text_style)
+            sheet.write(baris, 26, sp1 or '', text_style)
+            sheet.write(baris, 27, sp2 or '', text_style)
+            sheet.write(baris, 28, sp3 or '', text_style)
+            jeniskelamin='LAKI - LAKI'
+            if emp1.gender!='male':
+                jeniskelamin='PEREMPUAN'
+            warganegara='WNI'
+            if emp1.country_id.name !='Indonesia':
+                warganegara='WNA'
+            sheet.write(baris, 29, jeniskelamin or '', text_style)
+            sheet.write(baris, 30, warganegara or '', text_style)
             identification = ''
             if emp1.identification_id:
                 identification = 'KTP'
@@ -390,18 +464,36 @@ class EmployeeExcelReportController(http.Controller):
             sheet.write(baris, 32, emp1.identification_id or '', text_style)
             sheet.write(baris, 33, emp1.kk_no or '', text_style)
             sheet.write(baris, 34, emp1.npwp_no or '', text_style)
-            sheet.write(baris, 35, emp1.npwp_state or '', text_style)
+            statenpwp='TK'
+            if emp1.npwp_state=='K0':
+                statenpwp='K/0'
+            elif emp1.npwp_state=='K1':
+                statenpwp='K/1'
+            elif emp1.npwp_state=='K2':
+                statenpwp='K/2'
+            elif emp1.npwp_state=='K3':
+                statenpwp='K/3'
+            sheet.write(baris, 35, statenpwp or '', text_style)
             sheet.write(baris, 36, emp1.bank_account_id.bank_id.name or '', text_style)
             sheet.write(baris, 37, emp1.bank_account_id.acc_number or '', text_style)
             sheet.write(baris, 38, emp1.place_of_birth or '', text_style)
             sheet.write(baris, 39, emp1.birthday or '', text_style)
             sheet.write(baris, 40, emp1.npwp_address or '', text_style)
             sheet.write(baris, 41, emp1.address_home_id.street or '', text_style)
-            sheet.write(baris, 42, emp1.religion or '', text_style)
-            sheet.write(baris, 43, emp1.certificate or '', text_style)
+            religion='ISLAM'
+            if emp1.religion=='Buddha':
+                religion='BUDHA'
+            sheet.write(baris, 42,religion or '', text_style)
+            certificate="SMA/SEDERAJAT"
+            if emp1.certificate == 'bachelor':
+                certificate='STARTAT'
+            sheet.write(baris, 43, certificate or '', text_style)
             sheet.write(baris, 44, emp1.study_field or '', text_style)
-            sheet.write(baris, 45, emp1.marital or '', text_style)
-            sheet.write(baris, 46, emp1.work_phone or '', text_style)
+            statuskawin='TIDAK KAWIN'
+            if emp1.marital == 'married':
+                statuskawin='KAWIN'
+            sheet.write(baris, 45, statuskawin or '', text_style)
+            sheet.write(baris, 46, emp1.mobile_phone or '', text_style)
             sheet.write(baris, 47, emp1.work_email or '', text_style)
             sheet.write(baris, 48, emp1.emergency_contact or '', text_style)
             sheet.write(baris, 49, emp1.emergency_relation or '', text_style)
@@ -468,65 +560,60 @@ class EmployeeExcelReportController(http.Controller):
 
         sheet2.set_column(0, 0, 2.14)
         sheet2.set_column(1, 1, 4.29)
-        sheet2.set_column(2, 2, 15)
-        sheet2.set_column(3, 3, 15)
-        sheet2.set_column(4, 4, 15)
-        sheet2.set_column(5, 5, 15)
-        sheet2.set_column(6, 6, 15)
-        sheet2.set_column(7, 7, 15)
-        sheet2.set_column(8, 8, 15)
-        sheet2.set_column(9, 9, 15)
-        sheet2.set_column(10, 10, 15)
-        sheet2.set_column(11, 11, 15)
-        sheet2.set_column(12, 12, 15)
-        sheet2.set_column(13, 13, 15)
-        sheet2.set_column(14, 14, 15)
-        sheet2.set_column(15, 15, 15)
-        sheet2.set_column(16, 16, 15)
+        sheet2.set_column(2, 2, 8.86)
+        sheet2.set_column(3, 3, 10.29)
+        sheet2.set_column(4, 4, 15.43)
+        sheet2.set_column(5, 5, 13)
+        sheet2.set_column(6, 6, 14.57)
+        sheet2.set_column(7, 7, 19.29)
+        sheet2.set_column(8, 8, 10.86)
+        sheet2.set_column(9, 9, 10.86)
+        sheet2.set_column(10, 10, 10.86)
+        sheet2.set_column(11, 11, 10.86)
+        sheet2.set_column(12, 12, 12.43)
+        sheet2.set_column(13, 13, 12.43)
+        sheet2.set_column(14, 14, 10.71)
+        sheet2.set_column(15, 15, 28.43)
+        sheet2.set_column(16, 16, 30.86)
         sheet2.set_column(17, 17, 15)
-        sheet2.set_column(18, 18, 15)
+        sheet2.set_column(18, 18, 13.43)
         sheet2.set_column(19, 19, 15)
         sheet2.set_column(20, 20, 15)
         sheet2.set_column(21, 21, 15)
-        sheet2.set_column(22, 22, 15)
-        sheet2.set_column(23, 23, 15)
-        sheet2.set_column(24, 24, 15)
-        sheet2.set_column(25, 25, 15)
-        sheet2.set_column(26, 26, 15)
-        sheet2.set_column(27, 27, 15)
-        sheet2.set_column(28, 28, 15)
-        sheet2.set_column(29, 29, 15)
-        sheet2.set_column(30, 30, 15)
-        sheet2.set_column(31, 31, 15)
-        sheet2.set_column(32, 32, 15)
-        sheet2.set_column(33, 33, 15)
-        sheet2.set_column(34, 34, 15)
-        sheet2.set_column(35, 35, 15)
-        sheet2.set_column(36, 36, 15)
-        sheet2.set_column(37, 37, 15)
-        sheet2.set_column(38, 38, 15)
-        sheet2.set_column(39, 39, 15)
+        sheet2.set_column(22, 22, 19)
+        sheet2.set_column(23, 23, 19)
+        sheet2.set_column(24, 24, 21)
+        sheet2.set_column(25, 25, 21)
+        sheet2.set_column(26, 26, 5.71)         
+        sheet2.set_column(27, 27, 7.71)         
+        sheet2.set_column(28, 28, 15)           
+        sheet2.set_column(29, 29, 20)
+        sheet2.set_column(30, 30, 15)           
+        sheet2.set_column(31, 31, 108.57)       
+        sheet2.set_column(32, 32, 108.57)       
+        sheet2.set_column(33, 33, 9)            
+        sheet2.set_column(34, 34, 19)     
+        sheet2.set_column(35, 35, 30)     
+        sheet2.set_column(36, 36, 15)     
+        sheet2.set_column(37, 37, 15)     
+        sheet2.set_column(38, 38, 34)     
+        sheet2.set_column(39, 39, 34)
         sheet2.set_column(40, 40, 15)
-        sheet2.set_column(41, 41, 15)
-        sheet2.set_column(42, 42, 15)
-        sheet2.set_column(43, 43, 15)
-        sheet2.set_column(44, 44, 15)
-        sheet2.set_column(45, 45, 15)
-        sheet2.set_column(46, 46, 15)
-        sheet2.set_column(47, 47, 15)
-        sheet2.set_column(48, 48, 15)
-        sheet2.set_column(49, 49, 15)
-        sheet2.set_column(50, 50, 15)
-        sheet2.set_column(51, 51, 15)
+        sheet2.set_column(41, 41, 15)            
+        sheet2.set_column(42, 42, 93)            
+        sheet2.set_column(43, 43, 25)            
+        sheet2.set_column(44, 44, 25)            
+        sheet2.set_column(45, 45, 30)            
+        sheet2.set_column(46, 46, 20)            
+        sheet2.set_column(47, 47, 30)            
+        sheet2.set_column(48, 48, 15)            
+        sheet2.set_column(49, 49, 30)            
+        sheet2.set_column(50, 50, 15)            
+        sheet2.set_column(51, 51, 30)            
         sheet2.set_column(52, 52, 15)
-        sheet2.set_column(53, 53, 15)
-        sheet2.set_column(54, 54, 15)
-        sheet2.set_column(55, 55, 15)
-        sheet2.set_column(56, 56, 15)
-        sheet2.set_column(57, 57, 15)
-        sheet2.set_column(58, 58, 15)
-        sheet2.set_column(59, 59, 15)
         sheet2.freeze_panes(4, 0)
+
+        sheet.set_row(3, 30)
         sheet2.merge_range(0, 1, 1, 6, 'KURIR', header_style_top)
         sheet2.merge_range(2, 1, 3, 1, 'No', header_style)
         sheet2.merge_range(2, 2, 3, 2, 'NIK Kurir KNA', header_style)
@@ -636,21 +723,43 @@ class EmployeeExcelReportController(http.Controller):
         sheet2.write(4, 48, '', header_style)
         sheet2.write(4, 49, '', header_style)
         sheet2.write(4, 50, '', header_style)
-        sheet2.autofilter(4, 1, 4, 59)
-        domain_2 = [('vendor_id', '=', False), ('job_id.name', 'ilike', 'Kurir')]
-        employee_2 = request.env['hr.employee'].search(domain_2, order='name ASC')
+        sheet2.write(4, 51, '', header_style)
+        sheet2.write(4, 52, '', header_style)
+        sheet2.autofilter(4, 1, 4, 52)
+        domain_2 = domain_1_2+[('vendor_id', '=', False), ('job_id.name', 'ilike', 'Kurir')]
+        employee_2 = request.env['hr.employee'].search(domain_2, order='nik ASC')
         no2 = 1
         baris2 = 5
 
         for emp2 in employee_2:
-            if emp2.resign_date:
-                text_style.set_bg_color('#ff0000')
-            sheet2.write(baris2, 1, no2, text_style)
+            if str(emp2.resign_date) != 'False':
+                text_stylemerah = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_stylemerah.set_text_wrap()
+                text_stylemerah.set_align('center')
+                text_stylemerah.set_align('vcenter')
+                text_stylemerah.set_font_size(10)
+                # print("masuk sini warna")
+                text_stylemerah.set_bg_color('#ff0000')
+                text_style = text_stylemerah
+            else:
+                text_styleputih = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_styleputih.set_text_wrap()
+                text_styleputih.set_align('center')
+                text_styleputih.set_align('vcenter')
+                text_styleputih.set_font_size(10)
+                # print("masuk putih")
+                text_styleputih.set_bg_color('#ffffff')
+                text_style = text_styleputih
+            sheet2.write(baris2, 1, str(no2), text_style)
             sheet2.write(baris2, 2, emp2.nik_kna or '', text_style)
             sheet2.write(baris2, 3, emp2.nik or '', text_style)
             sheet2.write(baris2, 4, emp2.company_id.company_registry or '', text_style)
             rm = ''
-            db = ''
+            dp = ''
             erm = ''
             if emp2.dp_id:
                 dp = emp2.dp_id.name
@@ -671,10 +780,31 @@ class EmployeeExcelReportController(http.Controller):
             sheet2.write(baris2, 14, emp2.status or '', text_style)
             sheet2.write(baris2, 15, emp2.name, text_style)
             sheet2.write(baris2, 16, emp2.company_id.name or '', text_style)
-            sheet2.write(baris2, 17, '', text_style)
-            sheet2.write(baris2, 18, '', text_style)
-            sheet2.write(baris2, 19, emp2.gender or '', text_style)
-            sheet2.write(baris2, 20, emp2.country_id.name or '', text_style)
+            domain_pmd2 = [('employee_id', '=', emp2.id), ('state', '=', 'approved')]
+            employee_pmd_ids2 = request.env['employee.promotion'].search(domain_pmd2, order='promotion_date DESC',
+                                                                        limit=1)
+            if employee_pmd_ids2:
+                sheet2.write(baris2, 17, employee_pmd_ids2[0].promotion_date, text_style)
+                dppmdarray = []
+                if employee_pmd_ids2.dp_id:
+                    for d in employee_pmd_ids2[0].dp_id:
+                        dppmdarray.append(d.name)
+
+                dp_seblum = ','.join(dppmdarray)
+                sheet2.write(baris2, 18, dp_seblum, text_style)
+            else:
+
+                sheet2.write(baris2, 17, '', text_style)
+                sheet2.write(baris2, 18, '', text_style)
+            jeniskelamin = 'LAKI - LAKI'
+            if emp2.gender != 'male':
+                jeniskelamin = 'PEREMPUAN'
+            warganegara = 'WNI'
+            if emp2.country_id.name != 'Indonesia':
+                warganegara = 'WNA'
+
+            sheet2.write(baris2, 19, jeniskelamin or '', text_style)
+            sheet2.write(baris2, 20, warganegara or '', text_style)
             identification = ''
             if emp2.identification_id:
                 identification = 'KTP'
@@ -682,19 +812,38 @@ class EmployeeExcelReportController(http.Controller):
             sheet2.write(baris2, 22, emp2.identification_id or '', text_style)
             sheet2.write(baris2, 23, emp2.kk_no or '', text_style)
             sheet2.write(baris2, 24, emp2.npwp_no or '', text_style)
-            sheet2.write(baris2, 25, emp2.npwp_no or '', text_style)
-            sheet2.write(baris2, 26, emp2.npwp_state or '', text_style)
+            sheet2.write(baris2, 25, emp2.sim_no or '', text_style)
+            statenpwp = 'TK'
+            if emp2.npwp_state == 'K0':
+                statenpwp = 'K/0'
+            elif emp2.npwp_state == 'K1':
+                statenpwp = 'K/1'
+            elif emp2.npwp_state == 'K2':
+                statenpwp = 'K/2'
+            elif emp2.npwp_state == 'K3':
+                statenpwp = 'K/3'
+            sheet2.write(baris2, 26, statenpwp or '', text_style)
             sheet2.write(baris2, 27, emp2.bank_account_id.bank_id.name or '', text_style)
             sheet2.write(baris2, 28, emp2.bank_account_id.acc_number or '', text_style)
             sheet2.write(baris2, 29, emp2.place_of_birth or '', text_style)
             sheet2.write(baris2, 30, emp2.birthday or '', text_style)
             sheet2.write(baris2, 31, emp2.npwp_address or '', text_style)
             sheet2.write(baris2, 32, emp2.address_home_id.street or '', text_style)
-            sheet2.write(baris2, 33, emp2.religion or '', text_style)
-            sheet2.write(baris2, 34, emp2.certificate or '', text_style)
+            religion = 'ISLAM'
+            if emp2.religion == 'Buddha':
+                religion = 'BUDHA'
+            sheet2.write(baris2, 33, religion or '', text_style)
+            certificate = "SMA/SEDERAJAT"
+            if emp2.certificate == 'bachelor':
+                certificate = 'STARTAT'
+            sheet2.write(baris2, 34, certificate or '', text_style)
+
             sheet2.write(baris2, 35, emp2.study_field or '', text_style)
-            sheet2.write(baris2, 36, emp2.marital or '', text_style)
-            sheet2.write(baris2, 37, emp2.work_phone or '', text_style)
+            statuskawin = 'TIDAK KAWIN'
+            if emp2.marital == 'married':
+                statuskawin = 'KAWIN'
+            sheet2.write(baris2, 36, statuskawin or '', text_style)
+            sheet2.write(baris2, 37, emp2.mobile_phone or '', text_style)
             sheet2.write(baris2, 38, emp2.work_email or '', text_style)
             sheet2.write(baris2, 39, emp2.emergency_contact or '', text_style)
             sheet2.write(baris2, 40, emp2.emergency_relation or '', text_style)
@@ -766,64 +915,28 @@ class EmployeeExcelReportController(http.Controller):
 
         sheet3.set_column(0, 0, 2.14)
         sheet3.set_column(1, 1, 4.29)
-        sheet3.set_column(2, 2, 15)
-        sheet3.set_column(3, 3, 15)
-        sheet3.set_column(4, 4, 15)
-        sheet3.set_column(5, 5, 15)
-        sheet3.set_column(6, 6, 15)
-        sheet3.set_column(7, 7, 15)
-        sheet3.set_column(8, 8, 15)
-        sheet3.set_column(9, 9, 15)
-        sheet3.set_column(10, 10, 15)
-        sheet3.set_column(11, 11, 15)
-        sheet3.set_column(12, 12, 15)
-        sheet3.set_column(13, 13, 15)
-        sheet3.set_column(14, 14, 15)
-        sheet3.set_column(15, 15, 15)
-        sheet3.set_column(16, 16, 15)
-        sheet3.set_column(17, 17, 15)
-        sheet3.set_column(18, 18, 15)
+        sheet3.set_column(2, 2, 8.86)
+        sheet3.set_column(3, 3, 10.29)
+        sheet3.set_column(4, 4, 15.43)
+        sheet3.set_column(5, 5, 20)
+        sheet3.set_column(6, 6, 13)
+        sheet3.set_column(7, 7, 14.57)
+        sheet3.set_column(8, 8, 19.29)
+        sheet3.set_column(9, 9, 10.86)
+        sheet3.set_column(10, 10, 10.86)
+        sheet3.set_column(11, 11, 10.86)
+        sheet3.set_column(12, 12, 10.86)
+        sheet3.set_column(13, 13, 12.43)
+        sheet3.set_column(14, 14, 25)
+        sheet3.set_column(15, 15, 15.14)
+        sheet3.set_column(16, 16, 10.71)
+        sheet3.set_column(17, 17, 28.43)
+        sheet3.set_column(18, 18, 30.86)
         sheet3.set_column(19, 19, 15)
-        sheet3.set_column(20, 20, 15)
-        sheet3.set_column(21, 21, 15)
+        sheet3.set_column(20, 20, 19)
+        sheet3.set_column(21, 21, 108.57)
         sheet3.set_column(22, 22, 15)
-        sheet3.set_column(23, 23, 15)
-        sheet3.set_column(24, 24, 15)
-        sheet3.set_column(25, 25, 15)
-        sheet3.set_column(26, 26, 15)
-        sheet3.set_column(27, 27, 15)
-        sheet3.set_column(28, 28, 15)
-        sheet3.set_column(29, 29, 15)
-        sheet3.set_column(30, 30, 15)
-        sheet3.set_column(31, 31, 15)
-        sheet3.set_column(32, 32, 15)
-        sheet3.set_column(33, 33, 15)
-        sheet3.set_column(34, 34, 15)
-        sheet3.set_column(35, 35, 15)
-        sheet3.set_column(36, 36, 15)
-        sheet3.set_column(37, 37, 15)
-        sheet3.set_column(38, 38, 15)
-        sheet3.set_column(39, 39, 15)
-        sheet3.set_column(40, 40, 15)
-        sheet3.set_column(41, 41, 15)
-        sheet3.set_column(42, 42, 15)
-        sheet3.set_column(43, 43, 15)
-        sheet3.set_column(44, 44, 15)
-        sheet3.set_column(45, 45, 15)
-        sheet3.set_column(46, 46, 15)
-        sheet3.set_column(47, 47, 15)
-        sheet3.set_column(48, 48, 15)
-        sheet3.set_column(49, 49, 15)
-        sheet3.set_column(50, 50, 15)
-        sheet3.set_column(51, 51, 15)
-        sheet3.set_column(52, 52, 15)
-        sheet3.set_column(53, 53, 15)
-        sheet3.set_column(54, 54, 15)
-        sheet3.set_column(55, 55, 15)
-        sheet3.set_column(56, 56, 15)
-        sheet3.set_column(57, 57, 15)
-        sheet3.set_column(58, 58, 15)
-        sheet3.set_column(59, 59, 15)
+        sheet3.set_column(23, 23, 34)
         sheet3.freeze_panes(4, 0)
         sheet3.merge_range(0, 1, 1, 6, 'Reguler OS', header_style_top_os)
         sheet3.merge_range(2, 1, 3, 1, 'No', header_style_os)
@@ -874,15 +987,35 @@ class EmployeeExcelReportController(http.Controller):
         sheet3.write(4, 22, '', header_style_os)
         sheet3.write(4, 23, '', header_style_os)
         sheet3.autofilter(4, 1, 4, 23)
-        domain_3 = [('vendor_id', '!=', False), ('job_id.name', 'not ilike', 'Kurir')]
-        employee_3 = request.env['hr.employee'].search(domain_3, order='name ASC')
+        domain_3 = domain_1_2+[('vendor_id', '!=', False), ('job_id.name', 'not ilike', 'Kurir')]
+        employee_3 = request.env['hr.employee'].search(domain_3, order='nik ASC')
         no3 = 1
         baris3 = 5
 
         for emp3 in employee_3:
-            if emp3.resign_date:
-                text_style.set_bg_color('#ff0000')
-            sheet3.write(baris3, 1, no3, text_style)
+            if str(emp3.resign_date) != 'False':
+                text_stylemerah = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_stylemerah.set_text_wrap()
+                text_stylemerah.set_align('center')
+                text_stylemerah.set_align('vcenter')
+                text_stylemerah.set_font_size(10)
+                # print("masuk sini warna")
+                text_stylemerah.set_bg_color('#ff0000')
+                text_style = text_stylemerah
+            else:
+                text_styleputih = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_styleputih.set_text_wrap()
+                text_styleputih.set_align('center')
+                text_styleputih.set_align('vcenter')
+                text_styleputih.set_font_size(10)
+                # print("masuk putih")
+                text_styleputih.set_bg_color('#ffffff')
+                text_style = text_styleputih
+            sheet3.write(baris3, 1, str(no3), text_style)
             sheet3.write(baris3, 2, emp3.nik_kna or '', text_style)
             sheet3.write(baris3, 3, emp3.nik or '', text_style)
             sheet3.write(baris3, 4, emp3.company_id.company_registry or '', text_style)
@@ -916,7 +1049,7 @@ class EmployeeExcelReportController(http.Controller):
             sheet3.write(baris3, 19, identification or '', text_style)
             sheet3.write(baris3, 20, emp3.identification_id or '', text_style)
             sheet3.write(baris3, 21, emp3.address_home_id.street or '', text_style)
-            sheet3.write(baris3, 22, emp3.work_phone or '', text_style)
+            sheet3.write(baris3, 22, emp3.mobile_phone or '', text_style)
             sheet3.write(baris3, 23, emp3.work_email or '', text_style)
 
             no3 += 1
@@ -936,64 +1069,29 @@ class EmployeeExcelReportController(http.Controller):
 
         sheet4.set_column(0, 0, 2.14)
         sheet4.set_column(1, 1, 4.29)
-        sheet4.set_column(2, 2, 15)
-        sheet4.set_column(3, 3, 15)
-        sheet4.set_column(4, 4, 15)
-        sheet4.set_column(5, 5, 15)
-        sheet4.set_column(6, 6, 15)
-        sheet4.set_column(7, 7, 15)
-        sheet4.set_column(8, 8, 15)
-        sheet4.set_column(9, 9, 15)
-        sheet4.set_column(10, 10, 15)
-        sheet4.set_column(11, 11, 15)
-        sheet4.set_column(12, 12, 15)
-        sheet4.set_column(13, 13, 15)
+        sheet4.set_column(2, 2, 8.86)
+        sheet4.set_column(3, 3, 10.29)
+        sheet4.set_column(4, 4, 15.43)
+        sheet4.set_column(5, 5, 20)
+        sheet4.set_column(6, 6, 13)
+        sheet4.set_column(7, 7, 14.57)
+        sheet4.set_column(8, 8, 19.29)
+        sheet4.set_column(9, 9, 10.86)
+        sheet4.set_column(10, 10, 10.86)
+        sheet4.set_column(11, 11, 10.86)
+        sheet4.set_column(12, 12, 10.86)
+        sheet4.set_column(13, 13, 12.43)
         sheet4.set_column(14, 14, 15)
-        sheet4.set_column(15, 15, 15)
-        sheet4.set_column(16, 16, 15)
-        sheet4.set_column(17, 17, 15)
-        sheet4.set_column(18, 18, 15)
+        sheet4.set_column(15, 15, 15.14)
+        sheet4.set_column(16, 16, 10.71)
+        sheet4.set_column(17, 17, 28.43)
+        sheet4.set_column(18, 18, 30.86)
         sheet4.set_column(19, 19, 15)
-        sheet4.set_column(20, 20, 15)
-        sheet4.set_column(21, 21, 15)
+        sheet4.set_column(20, 20, 19)
+        sheet4.set_column(21, 21, 108.57)
         sheet4.set_column(22, 22, 15)
-        sheet4.set_column(23, 23, 15)
-        sheet4.set_column(24, 24, 15)
-        sheet4.set_column(25, 25, 15)
-        sheet4.set_column(26, 26, 15)
-        sheet4.set_column(27, 27, 15)
-        sheet4.set_column(28, 28, 15)
-        sheet4.set_column(29, 29, 15)
-        sheet4.set_column(30, 30, 15)
-        sheet4.set_column(31, 31, 15)
-        sheet4.set_column(32, 32, 15)
-        sheet4.set_column(33, 33, 15)
-        sheet4.set_column(34, 34, 15)
-        sheet4.set_column(35, 35, 15)
-        sheet4.set_column(36, 36, 15)
-        sheet4.set_column(37, 37, 15)
-        sheet4.set_column(38, 38, 15)
-        sheet4.set_column(39, 39, 15)
-        sheet4.set_column(40, 40, 15)
-        sheet4.set_column(41, 41, 15)
-        sheet4.set_column(42, 42, 15)
-        sheet4.set_column(43, 43, 15)
-        sheet4.set_column(44, 44, 15)
-        sheet4.set_column(45, 45, 15)
-        sheet4.set_column(46, 46, 15)
-        sheet4.set_column(47, 47, 15)
-        sheet4.set_column(48, 48, 15)
-        sheet4.set_column(49, 49, 15)
-        sheet4.set_column(50, 50, 15)
-        sheet4.set_column(51, 51, 15)
-        sheet4.set_column(52, 52, 15)
-        sheet4.set_column(53, 53, 15)
-        sheet4.set_column(54, 54, 15)
-        sheet4.set_column(55, 55, 15)
-        sheet4.set_column(56, 56, 15)
-        sheet4.set_column(57, 57, 15)
-        sheet4.set_column(58, 58, 15)
-        sheet4.set_column(59, 59, 15)
+        sheet4.set_column(23, 23, 34)
+
         sheet4.freeze_panes(4, 0)
         sheet4.merge_range(0, 1, 1, 6, 'Kurir OS', header_style_top_os)
         sheet4.merge_range(2, 1, 3, 1, 'No', header_style_os)
@@ -1045,15 +1143,35 @@ class EmployeeExcelReportController(http.Controller):
         sheet4.write(4, 23, '', header_style_os)
         sheet4.autofilter(4, 1, 4, 23)
 
-        domain_4 = [('vendor_id', '!=', False), ('job_id.name', 'ilike', 'Kurir')]
-        employee_4 = request.env['hr.employee'].search(domain_4, order='name ASC')
+        domain_4 = domain_1_2+[('vendor_id', '!=', False), ('job_id.name', 'ilike', 'Kurir')]
+        employee_4 = request.env['hr.employee'].search(domain_4, order='nik ASC')
         no4 = 1
         baris4 = 5
 
         for emp4 in employee_4:
-            if emp4.resign_date:
-                text_style.set_bg_color('#ff0000')
-            sheet4.write(baris4, 1, no4, text_style)
+            if str(emp4.resign_date) != 'False':
+                text_stylemerah = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_stylemerah.set_text_wrap()
+                text_stylemerah.set_align('center')
+                text_stylemerah.set_align('vcenter')
+                text_stylemerah.set_font_size(10)
+                # print("masuk sini warna")
+                text_stylemerah.set_bg_color('#ff0000')
+                text_style = text_stylemerah
+            else:
+                text_styleputih = workbook.add_format(
+                    {'font_name': 'Cambria', 'left': 1, 'bottom': 1, 'right': 1, 'top': 1, 'align': 'center',
+                     'num_format': 'dd-mm-yyyy'})
+                text_styleputih.set_text_wrap()
+                text_styleputih.set_align('center')
+                text_styleputih.set_align('vcenter')
+                text_styleputih.set_font_size(10)
+                # print("masuk putih")
+                text_styleputih.set_bg_color('#ffffff')
+                text_style = text_styleputih
+            sheet4.write(baris4, 1, str(no4), text_style)
             sheet4.write(baris4, 2, emp4.nik_kna or '', text_style)
             sheet4.write(baris4, 3, emp4.nik or '', text_style)
             sheet4.write(baris4, 4, emp4.company_id.company_registry or '', text_style)
@@ -1087,7 +1205,7 @@ class EmployeeExcelReportController(http.Controller):
             sheet4.write(baris4, 19, identification or '', text_style)
             sheet4.write(baris4, 20, emp4.identification_id or '', text_style)
             sheet4.write(baris4, 21, emp4.address_home_id.street or '', text_style)
-            sheet4.write(baris4, 22, emp4.work_phone or '', text_style)
+            sheet4.write(baris4, 22, emp4.mobile_phone or '', text_style)
             sheet4.write(baris4, 23, emp4.work_email or '', text_style)
 
             no4 += 1

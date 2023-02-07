@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Adding a salary rule for loan-->
+    <data noupdate="0">
+
+        <record id="hr_rule_tunjangan_keahlihan_reg" model="hr.salary.rule">
+            <field name="name">Tunjangan Keahlian</field>
+            <field name="sequence" eval="2"/>
+            <field name="code">TNJAHLI</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.tunjangan_keahlian</field>
+        </record>
+
+        <record id="hr_rule_tunjangan_jabatan_reg" model="hr.salary.rule">
+            <field name="name">Tunjangan Jabatan</field>
+            <field name="sequence" eval="3"/>
+            <field name="code">TNJJAB</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.tunjangan_jabatan</field>
+        </record>
+
+        <record id="hr_rule_tunjangan_masakerja_reg" model="hr.salary.rule">
+            <field name="name">Tunjangan Masa Kerja</field>
+            <field name="sequence" eval="4"/>
+            <field name="code">TNJMASA</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.tunjangan_masakerja</field>
+        </record>
+        <record id="hr_rule_tunjangan_lainnya_reg" model="hr.salary.rule">
+            <field name="name">Tunjangan Lainnya</field>
+            <field name="sequence" eval="5"/>
+            <field name="code">TNJLAIN</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.tunjangan_lainnya</field>
+        </record>
+        <record id="hr_rule_deposit_reg" model="hr.salary.rule">
+            <field name="code">DEP</field>
+            <field name="name">DEPOSIT</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.DEPOSIT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.DEP and + (inputs.DEP.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="6"/>
+        </record>
+
+        <record id="hr_rule_input_deposit_reg" model="hr.rule.input">
+            <field name="code">DEP</field>
+            <field name="name">DEPOSIT</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_deposit_reg"/>
+        </record>
+
+        <record id="hr_rule_tambahan_reg" model="hr.salary.rule">
+            <field name="code">ADD</field>
+            <field name="name">Tambahan</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.ADD and + (inputs.ADD.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="7"/>
+        </record>
+
+        <record id="hr_rule_input_tambahan_reg" model="hr.rule.input">
+            <field name="code">ADD</field>
+            <field name="name">Tambahan</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_tambahan_reg"/>
+        </record>
+
+        <record id="hr_rule_absence_deduction_reg" model="hr.salary.rule">
+            <field name="code">ABSDED</field>
+            <field name="name">Absence Deduction</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+jumlahijin=0.0
+if worked_days.ALPHA:
+    jumlahijin+=worked_days.ALPHA.number_of_days
+if worked_days.ALPHA2:
+    jumlahijin+=worked_days.ALPHA2.number_of_days
+if worked_days.UNPAID:
+    jumlahijin+=worked_days.UNPAID.number_of_days
+if worked_days.UNPAID2:
+    jumlahijin+=worked_days.UNPAID2.number_of_days
+result = (jumlahijin) * ((contract.wage+contract.tunjangan_keahlian+contract.tunjangan_jabatan+contract.tunjangan_masakerja+contract.tunjangan_lainnya)/25)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="8"/>
+        </record>
+
+
+
+        <record id="hr_rule_insentif_reg" model="hr.salary.rule">
+            <field name="code">INS</field>
+            <field name="name">Insentif</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.INS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.INS and + (inputs.INS.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="9"/>
+        </record>
+
+        <record id="hr_rule_input_insentif_reg" model="hr.rule.input">
+            <field name="code">INS</field>
+            <field name="name">Insentif</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_insentif_reg"/>
+        </record>
+        <record id="hr_rule_potongan_reg" model="hr.salary.rule">
+            <field name="code">DEDR</field>
+            <field name="name">Potongan</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.DEDR and + (inputs.DEDR.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <record id="hr_rule_input_potongan_reg" model="hr.rule.input">
+            <field name="code">DEDR</field>
+            <field name="name">Potongan</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_potongan_reg"/>
+        </record>
+
+
+
+		<record id="hr_rule_total_gross_reg" model="hr.salary.rule">
+            <field name="code">GROSSB</field>
+            <field name="name">Gross/Bulan</field>
+            <field name="category_id" ref="hr_payroll_community.GROSS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.BASIC + categories.ALW+ categories.DEPOSIT+ categories.INS - categories.DED)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="11"/>
+        </record>
+
+
+
+		<record id="hr_rule_total_gross_tahun_reg" model="hr.salary.rule">
+            <field name="code">GROSST</field>
+            <field name="name">Gross/Tahun</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.GROSST"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+lamakerja = inputs.LAMAKERJA and + (inputs.LAMAKERJA.amount)
+result = (categories.GROSS * lamakerja)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="12"/>
+        </record>
+
+        <record id="hr_rule_input_lamakerja_reg" model="hr.rule.input">
+            <field name="code">LAMAKERJA</field>
+            <field name="name">Lama Kerja</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_total_gross_tahun_reg"/>
+        </record>
+
+        <record id="hr_rule_thr_reg" model="hr.salary.rule">
+            <field name="code">THRR</field>
+            <field name="name">THR</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.THR"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.THRR and + (inputs.THRR.amount)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="13"/>
+        </record>
+
+        <record id="hr_rule_input_thr_reg" model="hr.rule.input">
+            <field name="code">THRR</field>
+            <field name="name">THR</field>
+            <field name="input_id" ref="mh_hr_payroll_expedition.hr_rule_thr_reg"/>
+        </record>
+
+
+		<record id="hr_rule_total_gross_thr_reg" model="hr.salary.rule">
+            <field name="code">GROSSTB</field>
+            <field name="name">Gross/Bulan inc THR</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.GROSSTB"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (categories.GROSS + categories.THR)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="14"/>
+        </record>
+		<record id="hr_rule_bi_jab_tahun_reg" model="hr.salary.rule">
+            <field name="code">BIJABT</field>
+            <field name="name">Bi Jab Gaji/Tahun</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.BIJABT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+
+lamakerja = inputs.LAMAKERJA and + (inputs.LAMAKERJA.amount)
+if (categories.GROSST*0.05)>=(500000*lamakerja):
+    bijab=500000*lamakerja
+else:
+    bijab=categories.GROSST*0.05
+
+result = bijab
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="15"/>
+        </record>
+		<record id="hr_rule_bi_jab_tahun_thr_reg" model="hr.salary.rule">
+            <field name="code">BIJABTT</field>
+            <field name="name">Bi Jab Gaji inc THR/Tahun</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.BIJABTT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+
+lamakerja = inputs.LAMAKERJA and + (inputs.LAMAKERJA.amount)
+total=(categories.GROSS+categories.THR)*lamakerja
+if (total*0.05)>=(500000*lamakerja):
+    bijab=500000*lamakerja
+else:
+    bijab=total*0.05
+
+result = bijab
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="16"/>
+        </record>
+
+		<record id="hr_rule_jamsostek_tk_reg" model="hr.salary.rule">
+            <field name="code">JAMTK</field>
+            <field name="name">Jamsostek TK</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.JAMTK"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = 90372
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="17"/>
+        </record>
+		<record id="hr_rule_jamsostek_pensiun_reg" model="hr.salary.rule">
+            <field name="code">JAMPEN</field>
+            <field name="name">Jamsostek Pensiun</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.JAMPEN"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = 45186
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="18"/>
+        </record>
+
+		<record id="hr_rule_jamsostek_ks_reg" model="hr.salary.rule">
+            <field name="code">JAMKS</field>
+            <field name="name">Jamsostek KS</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.JAMKS"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = 0
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="19"/>
+        </record>
+		<record id="hr_rule_jamsostek_total_reg" model="hr.salary.rule">
+            <field name="code">TOTALJAM</field>
+            <field name="name">Jamsostek Total</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTALJAM"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.JAMKS+categories.JAMPEN+categories.JAMTK
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+		<record id="hr_rule_jamsostek_total_tahun_reg" model="hr.salary.rule">
+            <field name="code">TOTALJAMT</field>
+            <field name="name">Jamsostek Total Tahun</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.TOTALJAMT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+lamakerja = inputs.LAMAKERJA and + (inputs.LAMAKERJA.amount)
+result = categories.TOTALJAM*lamakerja
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="21"/>
+        </record>
+		<record id="hr_rule_gajibersih_tahun_reg" model="hr.salary.rule">
+            <field name="code">GBT</field>
+            <field name="name">GajiBersih</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.GBT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.GROSST-categories.BIJABT-categories.TOTALJAMT
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="22"/>
+        </record>
+
+		<record id="hr_rule_gajibersih_tahun_thr_reg" model="hr.salary.rule">
+            <field name="code">GBTT</field>
+            <field name="name">GajiBersih TInc THR</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.GBTT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+lamakerja = inputs.LAMAKERJA and + (inputs.LAMAKERJA.amount)
+thr=categories.THR
+jabtahunanthr=categories.BIJABTT
+jabtahunan=categories.BIJABT
+tambahan=0
+if lamakerja>0:
+    tambahan=thr - ((jabtahunan/lamakerja)- (jabtahunanthr/lamakerja))
+result = categories.GBT+tambahan
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="23"/>
+        </record>
+
+        <record id="hr_rule_ptkp_reg" model="hr.salary.rule">
+            <field name="code">PTKP</field>
+            <field name="name">PTKP</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PTKP"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+ptkp=54000000
+if employee.npwp_state == 'k0' and employee.gender=='male':
+    ptkp=58500000
+if employee.npwp_state == 'k1' and employee.gender=='male':
+    ptkp=63000000
+if employee.npwp_state == 'k2' and employee.gender=='male':
+    ptkp=67500000
+if employee.npwp_state == 'k3' and employee.gender=='male':
+    ptkp=72000000
+if employee.npwp_state == 'tk0':
+    ptkp=54000000
+if employee.npwp_state == 'tk1':
+    ptkp=58500000
+if employee.npwp_state == 'tk2':
+    ptkp=63000000
+if employee.npwp_state == 'tk3':
+    ptkp=67500000
+result = ptkp
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="24"/>
+        </record>
+
+
+
+		<record id="hr_rule_pkp_reg" model="hr.salary.rule">
+            <field name="code">PKP</field>
+            <field name="name">PKP</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PKP"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+gross=categories.GBT
+ptkp=categories.PTKP
+pkp = 0
+if gross>ptkp:
+    pkp = categories.GBT - categories.PTKP
+else:
+    pkp=0
+result=pkp
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="25"/>
+        </record>
+		<record id="hr_rule_pkp_thr_reg" model="hr.salary.rule">
+            <field name="code">PKPTHR</field>
+            <field name="name">PKPTHR</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PKPTHR"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+gross=categories.GBTT
+ptkp=categories.PTKP
+pkp = 0
+if gross>ptkp:
+    pkp = categories.GBTT - categories.PTKP
+else:
+    pkp=0
+result=pkp
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="26"/>
+        </record>
+
+		<record id="hr_rule_pph21_tahunan_reg" model="hr.salary.rule">
+            <field name="code">PPH21T</field>
+            <field name="name">PPH21 Tahunan</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PPHT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+pkp=categories.PKP
+pph=0
+if employee.npwp_no:
+
+    if 60000000 >= pkp:
+        pph=(5/100)*pkp
+    elif 250000000 >= pkp:
+        pph=((15/100)*(pkp-60000000))+3000000
+    elif 500000000 >= pkp:
+        pph=((25/100)*(pkp-250000000))+3000000+28500000
+    elif 5000000000>=pkp:
+        pph=((30/100)*(pkp-500000000))+3000000+28500000+62500000
+    else:
+        pph=((35/100)*(pkp-5000000000))+3000000+28500000+62500000+1350000000
+    pph21=pph
+else:
+    if 60000000 >= pkp:
+        pph=(5/100)*pkp
+    elif 250000000 >= pkp:
+        pph=((15/100)*(pkp-60000000))+3000000
+    elif 500000000 >= pkp:
+        pph=((25/100)*(pkp-250000000))+3000000+28500000
+    elif 5000000000>=pkp:
+        pph=((30/100)*(pkp-500000000))+3000000+28500000+62500000
+    else:
+        pph=((35/100)*(pkp-5000000000))+3000000+28500000+62500000+1350000000
+    pph21=pph*(120/100)
+
+
+result = pph21
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="27"/>
+        </record>
+		<record id="hr_rule_pph21_thr_tahunan_reg" model="hr.salary.rule">
+            <field name="code">PPH21TT</field>
+            <field name="name">PPH21 inc THR /Tahun</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PPHTT"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+pkp=categories.PKPTHR
+pph=0
+if employee.npwp_no:
+
+    if 60000000 >= pkp:
+        pph=(5/100)*pkp
+    elif 250000000 >= pkp:
+        pph=((15/100)*(pkp-60000000))+3000000
+    elif 500000000 >= pkp:
+        pph=((25/100)*(pkp-250000000))+3000000+28500000
+    elif 5000000000>=pkp:
+        pph=((30/100)*(pkp-500000000))+3000000+28500000+62500000
+    else:
+        pph=((35/100)*(pkp-5000000000))+3000000+28500000+62500000+1350000000
+    pph21=pph
+else:
+    if 60000000 >= pkp:
+        pph=(5/100)*pkp
+    elif 250000000 >= pkp:
+        pph=((15/100)*(pkp-60000000))+3000000
+    elif 500000000 >= pkp:
+        pph=((25/100)*(pkp-250000000))+3000000+28500000
+    elif 5000000000>=pkp:
+        pph=((30/100)*(pkp-500000000))+3000000+28500000+62500000
+    else:
+        pph=((35/100)*(pkp-5000000000))+3000000+28500000+62500000+1350000000
+    pph21=pph*(120/100)
+
+
+result = pph21
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="28"/>
+        </record>
+		<record id="hr_rule_pph21_bulanan_reg" model="hr.salary.rule">
+            <field name="code">PPH21</field>
+            <field name="name">PPH21 bulanan</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.PPH"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+pphtahunanthr=categories.PPHTT
+pphtahunan=categories.PPHT
+lamakerja = inputs.LAMAKERJA and + (inputs.LAMAKERJA.amount)
+pph=0
+if lamakerja>0:
+    pph=(pphtahunanthr-pphtahunan)+(pphtahunan/lamakerja)
+
+
+result = pph
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="29"/>
+        </record>
+		<record id="hr_rule_gajiditerima_reg" model="hr.salary.rule">
+            <field name="code">NET</field>
+            <field name="name">GAji diterima</field>
+            <field name="category_id" ref="hr_payroll_community.NET"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+gajibulanan=categories.GROSS
+thr=categories.THRR
+pph=categories.PPH
+jamsostek=categories.TOTALJAM
+
+
+result = gajibulanan+thr-pph-jamsostek
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+		<record id="hr_rule_gajiditerima_bulan_reg" model="hr.salary.rule">
+            <field name="code">NETROUND</field>
+            <field name="name">GAji diterima dibulatkan</field>
+            <field name="category_id" ref="mh_hr_payroll_expedition.NETROUND"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+gaji=categories.NET
+
+
+result = round(gaji,-2)
+            </field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="sequence" eval="31"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+view_employee_overtime_manager,view_employee_overtime manager,mh_hr_employee_overtime.model_employee_overtime,hr.group_hr_manager,1,1,1,1
+view_employee_overtime_employee,view_employee_overtime iser,mh_hr_employee_overtime.model_employee_overtime,hr.group_hr_user,1,1,1,1
+view_employee_overtime_line_manager,view_employee_overtime line manager,mh_hr_employee_overtime.model_employee_overtime_line,hr.group_hr_manager,1,1,1,1
+view_employee_overtime_line_employee,view_employee_overtime line iser,mh_hr_employee_overtime.model_employee_overtime_line,hr.group_hr_user,1,1,1,1

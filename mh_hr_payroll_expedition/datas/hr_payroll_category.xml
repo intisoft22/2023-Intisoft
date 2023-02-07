@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+
+        <record id="TOTBASIC" model="hr.salary.rule.category">
+            <field name="name">TOTAL BASIC</field>
+            <field name="code">TOTBASIC</field>
+        </record>
+        <record id="INS" model="hr.salary.rule.category">
+            <field name="name">Insentif</field>
+            <field name="code">INS</field>
+        </record>
+        <record id="TOTINS" model="hr.salary.rule.category">
+            <field name="name">Total Insentif</field>
+            <field name="code">TOTINS</field>
+        </record>
+        <record id="TOTDELIV" model="hr.salary.rule.category">
+            <field name="name">Total Delivery</field>
+            <field name="code">TOTDELIV</field>
+        </record>
+
+        <record id="DELIV" model="hr.salary.rule.category">
+            <field name="name">Delivery</field>
+            <field name="code">DELIV</field>
+        </record>
+        <record id="TOTALEMP" model="hr.salary.rule.category">
+            <field name="name">Total employee</field>
+            <field name="code">TOTALEMP</field>
+        </record>
+
+        <record id="TOTGROSS" model="hr.salary.rule.category">
+            <field name="name">Total gross</field>
+            <field name="code">TOTGROSS</field>
+        </record>
+        <record id="PTKP" model="hr.salary.rule.category">
+            <field name="name">PTKP</field>
+            <field name="code">PTKP</field>
+        </record>
+        <record id="PKP" model="hr.salary.rule.category">
+            <field name="name">PKP</field>
+            <field name="code">PKP</field>
+        </record>
+        <record id="PKPTHR" model="hr.salary.rule.category">
+            <field name="name">PKPTHR</field>
+            <field name="code">PKPTHR</field>
+        </record>
+        <record id="PPH" model="hr.salary.rule.category">
+            <field name="name">PPH</field>
+            <field name="code">PPH</field>
+        </record>
+        <record id="DEPOSIT" model="hr.salary.rule.category">
+            <field name="name">DEPOSIT</field>
+            <field name="code">DEPOSIT</field>
+        </record>
+
+        <record id="GROSST" model="hr.salary.rule.category">
+            <field name="name">Gross 1 Tahun</field>
+            <field name="code">GROSST</field>
+        </record>
+
+        <record id="THR" model="hr.salary.rule.category">
+            <field name="name">THR</field>
+            <field name="code">THR</field>
+        </record>
+        <record id="GROSSTB" model="hr.salary.rule.category">
+            <field name="name">GROSSTB</field>
+            <field name="code">Gross bulan inc THR</field>
+        </record>
+
+        <record id="BIJABT" model="hr.salary.rule.category">
+            <field name="name">BIJABT</field>
+            <field name="code">Bi Jab / Tahun</field>
+        </record>
+
+        <record id="BIJABTT" model="hr.salary.rule.category">
+            <field name="name">BIJABTT</field>
+            <field name="code">Bi Jab / Tahun</field>
+        </record>
+
+
+        <record id="JAMTK" model="hr.salary.rule.category">
+            <field name="name">Jamsostek TK</field>
+            <field name="code">JAMTK</field>
+        </record>
+
+        <record id="JAMPEN" model="hr.salary.rule.category">
+            <field name="name">Jamsostek Pensiun</field>
+            <field name="code">JAMPEN</field>
+        </record>
+
+
+        <record id="JAMKS" model="hr.salary.rule.category">
+            <field name="name">Jamsostek KS</field>
+            <field name="code">JAMPEN</field>
+        </record>
+        <record id="TOTALJAM" model="hr.salary.rule.category">
+            <field name="name">Total Jamsostek</field>
+            <field name="code">TOTALJAM</field>
+        </record>
+
+        <record id="TOTALJAMT" model="hr.salary.rule.category">
+            <field name="name">Total Jamsostek Tahunan</field>
+            <field name="code">TOTALJAMT</field>
+        </record>
+
+        <record id="GBT" model="hr.salary.rule.category">
+            <field name="name">Gaji Bersih Tahunan</field>
+            <field name="code">GBT</field>
+        </record>
+
+        <record id="GBTT" model="hr.salary.rule.category">
+            <field name="name">Gaji Bersih Tahunan THR</field>
+            <field name="code">GBTT</field>
+        </record>
+
+        <record id="PPHT" model="hr.salary.rule.category">
+            <field name="name">PPH Tahunan</field>
+            <field name="code">PPHT</field>
+        </record>
+        <record id="PPHTT" model="hr.salary.rule.category">
+            <field name="name">PPH THR Tahunan</field>
+            <field name="code">PPHTT</field>
+        </record>
+
+        <record id="NETROUND" model="hr.salary.rule.category">
+            <field name="name">NETROUND</field>
+            <field name="code">NETROUND</field>
+        </record>
+
+
+    </data>
+</odoo>

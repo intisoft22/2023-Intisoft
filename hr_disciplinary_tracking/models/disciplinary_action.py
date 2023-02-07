@@ -64,7 +64,7 @@ class DisciplinaryAction(models.Model):
                                       help="Employee can submit any documents which supports their explanation")
     note = fields.Text(string="Internal Note")
     joined_date = fields.Date(string="Joined Date", help="Employee joining date")
-
+    date = fields.Date(string="Date",track_visibility="always", required=True, )
     # assigning the sequence for the record
     @api.model
     def create(self, vals):

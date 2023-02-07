@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="payroll_kuriros_tree" model="ir.ui.view">
+            <field name="name">payroll.kuriros.tree</field>
+            <field name="model">payroll.kuriros</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Payroll Kurir OS">
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="payroll_kuriros_form" model="ir.ui.view">
+            <field name="name">payroll.kuriros.form</field>
+            <field name="model">payroll.kuriros</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Payroll Kurir OS">
+                    <header>
+                        <button string="Confirm" type="object" name="confirm_overtime" states='draft'
+                                class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel_overtime" states='draft'/>
+                        <button string="Approve" type="object" groups="hr.group_hr_user" name="approve_overtime"
+                                states='confirm' class="oe_highlight"/>
+                        <button string="Reject" type="object" groups="hr.group_hr_user" name="reject_overtime"
+                                states='confirm'/>
+                        <button string="Set to Draft" type="object" groups="hr.group_hr_manager" name="reset_to_draft"
+                                states='approved'/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <label for="date_from" string="Period"/>
+                            <div>
+                                <field name="date_from" class="oe_inline"/>
+                                -
+                                <field name="date_to" class="oe_inline"/>
+                            </div>
+
+
+                        </group>
+                        <group>
+                            <field name="line_ids" nolabel="1" context="{'default_date_from':date_from,'default_date_to':date_to}">
+
+                                <tree >
+                                    <field name="employee_id"/>
+                                    <field name="department_id"/>
+                                    <field name="employee_contract" invisible="1"/>
+                                    <field name="date_from" invisible="1"/>
+                                    <field name="date_to" invisible="1"/>
+                                    <field name="pp_cash_intercity"/>
+                                    <field name="pp_cash_outcity"/>
+                                    <field name="pp_pm"/>
+                                    <field name="cc_cash"/>
+                                    <field name="deliv_intercity"/>
+                                    <field name="deliv_outcity"/>
+                                    <field name="denda"/>
+                                    <field name="rate_deliv" invisible="1"/>
+                                    <field name="rate_fee" invisible="1"/>
+                                    <field name="state" invisible="1"/>
+
+                                </tree>
+
+                                <form>
+                                    <group>
+
+                                        <field name="employee_id"/>
+                                        <field name="department_id"/>
+                                        <field name="employee_contract"/>
+                                        <field name="date_from"/>
+                                        <field name="date_to"/>
+                                        <field name="pp_cash_intercity"/>
+                                        <field name="pp_cash_outcity"/>
+                                        <field name="pp_pm"/>
+                                        <field name="cc_cash"/>
+                                        <field name="deliv_intercity"/>
+                                        <field name="deliv_outcity"/>
+                                        <field name="denda"/>
+                                        <field name="rate_deliv"/>
+                                        <field name="rate_fee"/>
+                                        <field name="state"/>
+                                    </group>
+
+                                </form>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="search_payroll_kuriros" model="ir.ui.view">
+            <field name="name">payroll.kuriros.search</field>
+            <field name="model">payroll.kuriros</field>
+            <field name="arch" type="xml">
+                <search string="Payroll Kurir OS">
+                    <field name="name"/>
+                    <group expand="0" string="Group By">
+                        <filter name="date_from" string="Date" domain="[]" context="{'group_by':'date_from'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="view_payroll_kuriros">
+            <field name="name">Payroll Kurir OS</field>
+            <field name="res_model">payroll.kuriros</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="search_payroll_kuriros"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Payroll Kurir OS Form
+                </p>
+            </field>
+        </record>
+        <menuitem id="payroll_kuriros_menu" parent="hr_payroll_community.menu_hr_payroll_community_root" name="Payroll Kurir OS"
+                  action="view_payroll_kuriros" groups="hr.group_hr_user" sequence="20"/>
+
+
+    </data>
+</odoo>
+
+

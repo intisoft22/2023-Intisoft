@@ -163,3 +163,10 @@ class EmployeeRelationInfo(models.Model):
     _name = 'hr.employee.relation'
 
     name = fields.Char(string="Relationship", help="Relationship with thw employee")
+
+
+
+class ResCompany(models.Model):
+    _inherit = "res.company"
+
+    kode = fields.Char(string="Code")

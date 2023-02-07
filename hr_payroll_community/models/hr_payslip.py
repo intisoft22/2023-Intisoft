@@ -171,6 +171,31 @@ class HrPayslip(models.Model):
             payslip.write({'line_ids': lines, 'number': number})
         return True
 
+    def compute_prop(self):
+
+        for payslip in self:
+            payslip.write({
+                # 'input_line_ids': False,
+                'worked_days_line_ids': False,
+            })
+
+            contracts = self.env['hr.contract'].browse(payslip.contract_id.id)
+            worked_days_line_ids = self.get_worked_day_lines(contracts, payslip.date_from, payslip.date_to)
+            input_line_ids = self.get_inputs(contracts, payslip.date_from, payslip.date_to)
+            # print(worked_days_line_ids)
+            # print(input_line_ids)
+            # slip_data = self.env['hr.payslip'].onchange_employee_id(payslip.date_from, payslip.date_to, payslip.employee_id.id, contract_id=payslip.contract_id.id)
+            payslip.write({
+                # 'input_line_ids': [(0, 0, x) for x in input_line_ids],
+                'worked_days_line_ids': [(0, 0, x) for x in worked_days_line_ids],
+            })
+            for input in input_line_ids:
+                if input.get('amount'):
+                    inputs = self.env['hr.payslip.input'].search([('payslip_id','=',payslip.id),('code','=',input.get('code'))])
+                    inputs.amount=input.get('amount')
+
+        return True
+
     @api.model
     def get_worked_day_lines(self, contracts, date_from, date_to):
 
@@ -453,6 +478,8 @@ class HrPayslip(models.Model):
         contracts = self.env['hr.contract'].browse(contract_ids)
         worked_days_line_ids = self.get_worked_day_lines(contracts, date_from, date_to)
         input_line_ids = self.get_inputs(contracts, date_from, date_to)
+        # print(worked_days_line_ids)
+        # print(input_line_ids)
         res['value'].update({
             'worked_days_line_ids': worked_days_line_ids,
             'input_line_ids': input_line_ids,
@@ -615,6 +642,15 @@ class HrPayslipRun(models.Model):
     def close_payslip_run(self):
         return self.write({'state': 'close'})
 
+    def compute_sheet(self):
+
+        for payslip in self:
+            for slip in payslip.slip_ids:
+                try:
+                    slip.compute_prop()
+                finally:
+                    slip.compute_sheet()
+        return True
 
 class ResourceMixin(models.AbstractModel):
     _inherit = "resource.mixin"

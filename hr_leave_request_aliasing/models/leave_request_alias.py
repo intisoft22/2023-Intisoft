@@ -27,7 +27,7 @@ class HrLeaveAlias(models.Model):
                 cleaner = re.compile('<.*?>')
                 clean_msg_body = re.sub(cleaner, '', msg_body)
                 date_list = re.findall(r'\d{2}/\d{2}/\d{4}', clean_msg_body)
-                print('date_list',date_list)
+                # print('date_list',date_list)
                 if len(date_list) > 0:
                     date_from = date_list[0]
                     # if len(date_list) > 1:
