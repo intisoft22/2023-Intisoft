@@ -34,7 +34,7 @@ class HrLeaveAlias(models.Model):
                     if len(date_list) == 1:
                         start_date = datetime.strptime(date_list[0], '%d/%m/%Y')
                         date_to = start_date
-                        print('date_to',date_to)
+                        # print('date_to',date_to)
                         # no_of_days_temp = 1
                     else:
                         start_date = datetime.strptime(date_list[0], '%d/%m/%Y')

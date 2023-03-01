@@ -12,7 +12,7 @@ class Reminders(http.Controller):
         for i in request.env['hr.reminder'].search([]):
             if i.reminder_active:
                 reminder.append(i.name)
-            print('reminder',reminder)
+            # print('reminder',reminder)
         return reminder
         # reminder_dict = {}
         # reminder_list = []

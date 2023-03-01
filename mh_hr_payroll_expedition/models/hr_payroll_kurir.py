@@ -71,6 +71,13 @@ class PayrollKurir(models.Model):
                 line.state='approved'
 
 
+    @api.model
+    def get_import_templates(self):
+        return [{
+            'label': _('Import Template for Payroll for Kurir'),
+            'template': '/mh_hr_payroll_expedition/static/xls/payroll_kurir_template.xlsx'
+        }]
+
 
 class PayrollKurirLine(models.Model):
     _name = 'payroll.kurir.line'

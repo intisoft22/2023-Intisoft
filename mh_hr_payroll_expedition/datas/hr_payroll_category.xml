@@ -70,12 +70,12 @@
 
         <record id="BIJABT" model="hr.salary.rule.category">
             <field name="name">BIJABT</field>
-            <field name="code">Bi Jab / Tahun</field>
+            <field name="code">BIJABT</field>
         </record>
 
         <record id="BIJABTT" model="hr.salary.rule.category">
             <field name="name">BIJABTT</field>
-            <field name="code">Bi Jab / Tahun</field>
+            <field name="code">BIJABTT</field>
         </record>
 
 

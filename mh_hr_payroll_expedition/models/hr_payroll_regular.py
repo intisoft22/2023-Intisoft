@@ -71,6 +71,14 @@ class PayrollRegular(models.Model):
                 line.state='approved'
 
 
+    @api.model
+    def get_import_templates(self):
+        return [{
+            'label': _('Import Template for Payroll for Reguler'),
+            'template': '/mh_hr_payroll_expedition/static/xls/payroll_reguler_template.xlsx'
+        }]
+
+
 
 class PayrollRegularLine(models.Model):
     _name = 'payroll.regular.line'

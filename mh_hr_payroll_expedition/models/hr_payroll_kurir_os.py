@@ -82,6 +82,13 @@ class PayrollKuriros(models.Model):
                 line.state='approved'
 
 
+    @api.model
+    def get_import_templates(self):
+        return [{
+            'label': _('Import Template for Payroll for Kurir OS'),
+            'template': '/mh_hr_payroll_expedition/static/xls/payroll_kuriros_template.xlsx'
+        }]
+
 
 class PayrollKurirosLine(models.Model):
     _name = 'payroll.kuriros.line'

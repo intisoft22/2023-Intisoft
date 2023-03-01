@@ -225,7 +225,7 @@ result = totaldeliv+ categories.TOTINS
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
             <field name="sequence" eval="400"/>
-            <field name="amount_python_compute">result = categories.TOTGROSS + categories.ALW -  categories.DED</field>
+            <field name="amount_python_compute">result = categories.TOTGROSS + categories.ALW +  categories.DED</field>
         </record>
 
 		<record id="hr_rule_fee_management_kurir_os" model="hr.salary.rule">

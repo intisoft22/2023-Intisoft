@@ -10,6 +10,8 @@
     'data': [
         'datas/payrollkurir_sequence.xml',
         'datas/payrollkuriros_sequence.xml',
+        'datas/payrollreguler_sequence.xml',
+        'datas/payrollreguleros_sequence.xml',
         'datas/hr_payroll_category.xml',
         'datas/salary_rule_regular_os.xml',
         'datas/salary_rule_regular.xml',
@@ -21,7 +23,8 @@
         'views/hr_payroll_kurir_view.xml',
         'views/hr_payroll_regular_view.xml',
         'views/hr_payroll_regularos_view.xml',
-        'security/ir.model.access.csv'
+        'security/ir.model.access.csv',
+        'reports/views/payroll_kuriros_report_view.xml',
     ],
     'installable': True,
     'auto_install': False

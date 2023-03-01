@@ -77,7 +77,7 @@
                 <xpath expr="//field[@name='date_order']" position="after">
                     <field name="recur"/>
                     <field name="period_recur" attrs="{'invisible':[('recur','=',False)]}"/>
-                    <field name="next_date" invisible="1"/>
+                    <field name="next_date"  groups="base.group_no_one"/>
                 </xpath>
             </field>
         </record>

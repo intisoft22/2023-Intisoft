@@ -111,7 +111,7 @@ class HrResignation(models.Model):
 
     def confirm_resignation(self):
         if self.joined_date:
-            if self.joined_date >= self.expected_revealing_date:
+            if self.joined_date > self.expected_revealing_date:
                 raise ValidationError(_('Last date of the Employee must be anterior to Joining date'))
             for rec in self:
                 rec.state = 'confirm'

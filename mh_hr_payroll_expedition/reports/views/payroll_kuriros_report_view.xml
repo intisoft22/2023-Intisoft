@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form untuk memilih Payroll Kurir OSperson dan tanggal mulai dan tanggal akhir -->
+        <record id="payroll_kurirosreport_wizard_form" model="ir.ui.view">
+            <field name="name">Payroll Kurir OS Report</field>
+            <field name="model">payroll.kuriros.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Payroll Kurir OSReport in Excel Format">
+                    <group>
+                        <label string="Period" for="bulan"  />
+                        <div>
+                            <field name="bulan" class="oe_inline"/>
+                            <span>-</span>
+                            <field name="tahun" class="oe_inline" />
+                        </div>
+                    </group>
+                    <footer>
+                        <button name="get_excel_report" string="Export (XLS)" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk membuka form diatas -->
+        <record model="ir.actions.act_window" id="action_open_payroll_kurirosreport_wizard_form">
+            <field name="name">Payroll Kurir OS Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payroll.kuriros.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+                id="menu_reporting_excel_payroll"
+                name="Reporting Excel"
+                parent="hr_payroll_community.menu_hr_payroll_community_root"
+                groups="hr.group_hr_manager,hr.group_hr_user"
+                sequence="99"/>
+        <!-- Tambah menu baru di Sale >> Reportng -->
+        <menuitem name="Payroll Kurir OS Report"
+                  id="menu_payroll_kurirosreport_in_excel"
+                  parent="mh_hr_payroll_expedition.menu_reporting_excel_payroll"
+                  action="action_open_payroll_kurirosreport_wizard_form"
+                  groups="hr.group_hr_manager,hr.group_hr_user"
+        />
+
+
+    </data>
+</odoo>

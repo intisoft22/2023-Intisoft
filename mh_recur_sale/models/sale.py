@@ -12,10 +12,19 @@ class SaleOrder(models.Model):
                                      ('tahunan', 'Tahunan')], copy=True,)
     next_date = fields.Date('Next Date Purchase Order')
 
+    def _prepare_confirmation_values(self):
+        if self.date_order:
+            date_order=self.date_order
+        else:
+            date_order=fields.Datetime.now()
+        return {
+            'state': 'sale',
+            'date_order': date_order
+        }
 
 
-    def button_confirm(self):
-        res = super(SaleOrder, self).button_confirm()
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
         # self.copy()
         if self.recur:
             if self.period_recur == 'harian':
@@ -30,7 +39,7 @@ class SaleOrder(models.Model):
             elif self.period_recur == 'tahunan':
 
                 self.next_date = self.date_order+ relativedelta(years=1)
-        return
+        return res
 
 
     @api.model

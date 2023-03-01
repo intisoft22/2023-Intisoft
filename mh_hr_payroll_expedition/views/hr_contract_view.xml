@@ -1,18 +1,21 @@
 <odoo>
     <data>
+        <menuitem id="config_payroll_menu" parent="hr_payroll_community.menu_hr_payroll_community_root" name="Payroll"
+                  groups="hr.group_hr_user" sequence="20"/>
         <record model="ir.ui.view" id="hr_contract_payroll_view">
             <field name="name">hr.contract.overtime.form.inherit.view</field>
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="/form/sheet/notebook/page[@name='information']/group[@name='main_info']/group[@name='salary_and_advantages']" position="inside">
-                     <field name="tunjangan_keahlian"/>
-                   <field name="tunjangan_jabatan"/>
-                   <field name="tunjangan_masakerja"/>
-                   <field name="tunjangan_lainnya"/>
-                   <field name="deposit"/>
-                   <field name="rate_deliv"/>
-                   <field name="rate_fee"/>
+                <xpath expr="/form/sheet/notebook/page[@name='information']/group[@name='main_info']/group[@name='salary_and_advantages']"
+                       position="inside">
+                    <field name="tunjangan_keahlian"/>
+                    <field name="tunjangan_jabatan"/>
+                    <field name="tunjangan_masakerja"/>
+                    <field name="tunjangan_lainnya"/>
+                    <field name="deposit"/>
+                    <field name="rate_deliv"/>
+                    <field name="rate_fee"/>
 
                 </xpath>
 

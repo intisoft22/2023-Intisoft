@@ -234,7 +234,7 @@ result = bijab
             <field name="category_id" ref="mh_hr_payroll_expedition.JAMTK"/>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 90372
+result = 87371.637
             </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="sequence" eval="17"/>
@@ -245,7 +245,7 @@ result = 90372
             <field name="category_id" ref="mh_hr_payroll_expedition.JAMPEN"/>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 45186
+result = 43685.8185
             </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="sequence" eval="18"/>
@@ -292,7 +292,9 @@ result = categories.TOTALJAM*lamakerja
             <field name="category_id" ref="mh_hr_payroll_expedition.GBT"/>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = categories.GROSST-categories.BIJABT-categories.TOTALJAMT
+bijabt=categories.BIJABT
+totaljamt=categories.TOTALJAMT
+result = categories.GROSST-bijabt-totaljamt
             </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="sequence" eval="22"/>

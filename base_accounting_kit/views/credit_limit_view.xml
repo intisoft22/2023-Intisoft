@@ -64,6 +64,13 @@
                         This customer's <strong>warning limit</strong> has been crossed.
                     </div>
                 </xpath>
+                 <xpath expr="//sheet/group[1]/group[2]/field[@name='date']" position="after">
+                           <field name="date" string="Accounting Date"
+                                       attrs="{
+                                            'readonly': [('state', '!=', 'draft')],
+                                       }"/>
+                 </xpath>
+
             </field>
         </record>
     </data>

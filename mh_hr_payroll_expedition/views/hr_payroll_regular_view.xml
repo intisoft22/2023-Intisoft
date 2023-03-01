@@ -108,7 +108,7 @@
             </field>
         </record>
         <record model="ir.actions.act_window" id="view_payroll_regular">
-            <field name="name">Payroll Kurir</field>
+            <field name="name">Payroll Regular</field>
             <field name="res_model">payroll.regular</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
@@ -118,9 +118,9 @@
                 </p>
             </field>
         </record>
-        <menuitem id="payroll_regular_menu" parent="hr_payroll_community.menu_hr_payroll_community_root"
+        <menuitem id="payroll_regular_menu" parent="mh_hr_payroll_expedition.config_payroll_menu"
                   name="Payroll Regular"
-                  action="view_payroll_regular" groups="hr.group_hr_user" sequence="14"/>
+                  action="view_payroll_regular" groups="hr.group_hr_user" sequence="10"/>
 
 
     </data>

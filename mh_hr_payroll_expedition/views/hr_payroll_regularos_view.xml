@@ -6,7 +6,7 @@
             <field name="model">payroll.regularos</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <tree string="Payroll Regular">
+                <tree string="Payroll Regular OS">
                     <field name="name"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
@@ -19,7 +19,7 @@
             <field name="model">payroll.regularos</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <form string="Payroll Regular">
+                <form string="Payroll Regular OS">
                     <header>
                         <button string="Confirm" type="object" name="confirm_overtime" states='draft'
                                 class="oe_highlight"/>
@@ -91,7 +91,7 @@
             <field name="name">payroll.regularos.search</field>
             <field name="model">payroll.regularos</field>
             <field name="arch" type="xml">
-                <search string="Payroll Regular">
+                <search string="Payroll Regular OS">
                     <field name="name"/>
                     <group expand="0" string="Group By">
                         <filter name="date_from" string="Date" domain="[]" context="{'group_by':'date_from'}"/>
@@ -100,19 +100,19 @@
             </field>
         </record>
         <record model="ir.actions.act_window" id="view_payroll_regularos">
-            <field name="name">Payroll Kurir</field>
+            <field name="name">Payroll Regular OS</field>
             <field name="res_model">payroll.regularos</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="search_view_id" ref="search_payroll_regularos"/>
             <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Payroll Regular Form
+                <p class="oe_view_nocontent_create">Payroll Regular OS Form
                 </p>
             </field>
         </record>
-        <menuitem id="payroll_regularos_menu" parent="hr_payroll_community.menu_hr_payroll_community_root"
+        <menuitem id="payroll_regularos_menu" parent="mh_hr_payroll_expedition.config_payroll_menu"
                   name="Payroll Regular OS"
-                  action="view_payroll_regularos" groups="hr.group_hr_user" sequence="14"/>
+                  action="view_payroll_regularos" groups="hr.group_hr_user" sequence="12"/>
 
 
     </data>

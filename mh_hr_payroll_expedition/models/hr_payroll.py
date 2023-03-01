@@ -124,12 +124,25 @@ class HrPayslip(models.Model):
 
         # Get the relativedelta between two dates
         delta = relativedelta.relativedelta(end_date, start_date)
-        print(delta)
-        print("==================================")
+        # print(res)
+        # print(delta)
+        # print("==================================")
         if delta.months >12:
             lamakerja=12
         else:
             lamakerja=delta.months
+
+        awaltahun = date(int(end_date.year), 1, 1)
+        akhirtahun = date(int(end_date.year), 12,31)
+        if contract_ids.employee_id.resign_date:
+            akhirtahun=datetime.strptime(str(contract_ids.employee_id.resign_date), date_format)
+        deltabulan = relativedelta.relativedelta(akhirtahun, awaltahun)
+        # print(lamakerja)
+
+        if deltabulan.months != 12:
+            lamakerja=12
+        else:
+            lamakerja=deltabulan.months
         for regular in payrollregular_ids:
             deposit = regular.deposit
             tambahan = regular.tambahan
@@ -156,5 +169,5 @@ class HrPayslip(models.Model):
                 if result.get('code') == 'LAMAKERJA':
                     result['amount'] = lamakerja
                     result['regular2line_id'] = regular.id
-
+        # print(res)
         return res

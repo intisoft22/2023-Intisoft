@@ -118,9 +118,9 @@
                 </p>
             </field>
         </record>
-        <menuitem id="payroll_kurir_menu" parent="hr_payroll_community.menu_hr_payroll_community_root"
+        <menuitem id="payroll_kurir_menu" parent="mh_hr_payroll_expedition.config_payroll_menu"
                   name="Payroll Kurir"
-                  action="view_payroll_kurir" groups="hr.group_hr_user" sequence="14"/>
+                  action="view_payroll_kurir" groups="hr.group_hr_user" sequence="11"/>
 
 
     </data>
